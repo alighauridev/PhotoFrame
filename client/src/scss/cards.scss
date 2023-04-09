@@ -1,0 +1,33 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+.cards {
+  width: 100%;
+  max-width: 600px;
+  @include lg{
+    margin: auto;
+  }
+  @include md{
+    max-width: 350px;
+  }
+  .nft__item {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 600px;
+      border-radius: 20px;
+      transition: box-shadow 200ms ease 0s;
+      border: 3px solid black;
+      background: #150c1b;
+      max-width: 500px;
+      object-fit: cover;
+      @include md{
+        height: 400px;
+      }
+    }
+  }
+}
+.swiper-3d .swiper-slide-shadow {
+   background: unset !important;; 
+}

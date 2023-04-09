@@ -1,0 +1,159 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+.works {
+  padding: 150px 15px 90px;
+  position: relative;
+  margin-top: -150px;
+  z-index: 2;
+  @include md{
+    padding: 60px 15px 90px; 
+  }
+  .ore {
+    position: absolute;
+    top: -4%;
+    z-index: -1;
+    right: 2%;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../public/images/Background/faq.png) center center/cover
+      no-repeat;
+    background-position: 0% 0%;
+    background-size: 100% auto;
+    z-index: -1;
+    @include md {
+      background-size: 150% auto;
+    }
+    @include sm {
+      background-size: 190% auto;
+    }
+  }
+  .second__heading {
+    margin-bottom: 100px;
+    h1 {
+      font-size: 6rem;
+      line-height: 1;
+      display: block;
+      font-weight: 100;
+      text-transform: uppercase;
+      text-shadow: 1px 2px 11px #00000026;
+      text-align: center;
+      color: #ffffff;
+      font-family: "Bebas Neue", cursive !important;
+      margin: 0;
+      margin-top: 30px;
+      margin-bottom: 40px;
+      @include md{
+        font-size: 5rem;
+      }
+    }
+    p {
+      font-size: 30px;
+      color: #fff;
+      text-align: center;
+      width: 80%;
+      margin: auto;
+      line-height: 1.3;
+      margin-top: 15px;
+      margin-bottom: 50px;
+      @include md {
+        width: 90%;
+        font-size: 24px;
+      }
+    }
+  }
+  .heading {
+    margin-bottom: 4rem;
+    h1 {
+      font-size: 6rem;
+      line-height: 1;
+      display: block;
+      font-weight: 100;
+      text-transform: uppercase;
+      text-shadow: 1px 2px 11px #00000026;
+      text-align: center;
+      color: #ffffff;
+      font-family: "Bebas Neue", cursive !important;
+      margin: 0;
+      margin-top: 30px;
+
+      @include md {
+        font-size: 5rem;
+      }
+    }
+    p {
+      text-align: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+  }
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 1rem;
+      .item {
+        background: #9e9e9e;
+        padding: 20px 15px 15px;
+        border-radius: 10px;
+        box-shadow: 0 1px 1px #00000014, 0 2px 2px #00000014,
+          0 4px 4px #00000014, 0 8px 8px #00000014, 0 0 10px #00000014;
+        border: 2px solid #16040c;
+        background-size: 110% 110%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @include md {
+          max-width: 375px;
+          margin: auto;
+          width: 95%;
+        }
+        h1 {
+          text-align: center;
+          margin: 0;
+          font-size: 5rem;
+          font-family: "Bebas Neue" !important;
+          font-weight: 100;
+          color: #fff;
+          text-shadow: 1px 2px 11px #00000026;
+        }
+        p {
+          text-align: center;
+          font-size: 30px;
+          margin: 10px 0px 20px;
+          line-height: 1.1;
+          font-family: "Bebas Neue";
+          color: #fff;
+          text-shadow: 1px 2px 6px #00000026;
+        }
+        .img {
+          img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 1px 1px #00000014, 0 2px 2px #00000014,
+              0 4px 4px #00000014, 0 8px 8px #00000014, 0 0 10px #00000014;
+            border: 1px solid black;
+            object-fit: contain;
+            margin: auto;
+            display: flex;
+            background: #cadce5;
+            height: 235px;
+          }
+        }
+      }
+    }
+  }
+}

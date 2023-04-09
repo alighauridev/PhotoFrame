@@ -1,0 +1,178 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+// #a07942
+.about {
+  padding: 90px 10px 150px;
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  @include md {
+    padding: 30px 10px 150px;
+  }
+
+  &::before {
+    // content: "";
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../public/images/Background/about-second.png) center
+      center/cover no-repeat;
+
+    background-position: 0% 0%;
+    background-size: contain;
+    z-index: -1;
+    filter: hue-rotate(255deg);
+  }
+
+  .container {
+    margin: auto;
+    max-width: 1300px;
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 40px;
+      text-transform: capitalize;
+      font-family: "Montserrat";
+    }
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-column-gap: 2rem;
+      grid-row-gap: 2rem;
+
+      @include lg {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      .item {
+        width: 100%;
+        display: flex;
+        margin-top: 20px;
+        justify-content: center;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .details {
+      padding: 30px 10px;
+      width: 90%;
+      margin: auto;
+
+      @include md {
+        padding: 20px 10px;
+      }
+
+      @include lg {
+        // padding: 20px 10px;
+        order: 1;
+      }
+
+      > p {
+        color: #222 !important;
+        font-size: 24px;
+        line-height: 33px;
+        font-weight: 300;
+        margin: 20px 10px;
+        span {
+          display: block;
+          color: #fff;
+          font-weight: 400;
+          margin-bottom: 6px;
+          font-size: 24px;
+          text-align: center;
+        }
+      }
+
+      a {
+        display: flex !important;
+        button {
+          font-family: "Bebas Neue";
+          background: #4f94cf;
+          border: 3px solid #a5d6ff;
+          box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease;
+          padding: 10px 20px;
+          border-radius: 0;
+          font-size: 30px;
+          color: #ffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          font-weight: 100;
+          letter-spacing: 1px;
+          margin: auto;
+
+          &:hover {
+            cursor: pointer;
+            transform: rotate(-2deg) scale(1.1);
+            color: #fff;
+          }
+        }
+      }
+    }
+    .btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      button {
+        display: inline-block;
+        padding: 12px 25px;
+        text-align: center;
+        border-radius: 35px;
+        font-family: "montserrat", HelveticaNeue, Helvetica Neue, Helvetica,
+          sans-serif;
+        text-transform: uppercase;
+        font-weight: 500 !important;
+        font-size: 20px !important;
+        line-height: 22px !important;
+        letter-spacing: 0.04rem !important;
+        text-decoration: none;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        margin-bottom: 2px;
+        background-color: #363d49;
+        background: -webkit-linear-gradient(top, #5d697e 0%, #555f72 100%);
+        background: linear-gradient(to bottom, #5d697e 0%, #555f72 100%);
+        color: #fff;
+      }
+    }
+  }
+}
+
+@keyframes Utility_cardL__gYhso {
+  0%,
+  100% {
+    transform: translateY(0) translateX(-33%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateY(-8px) translateX(-33%);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateY(8px) translateX(-33%);
+  }
+
+  80% {
+    transform: translateY(6.4px) translateX(-33%);
+  }
+
+  90% {
+    transform: translateY(-6.4px) translateX(-33%);
+  }
+}

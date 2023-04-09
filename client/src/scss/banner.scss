@@ -1,0 +1,396 @@
+@import url("http://fonts.cdnfonts.com/css/toruksc");
+@import "./variable.scss";
+@import "./media.scss";
+
+.banner {
+  position: relative;
+  height: 100vh;
+  z-index: 0;
+  background: #000
+    url("https://d29mtkonxnc5fw.cloudfront.net/site_assets/hazel-eyes-banner-desktop.jpg")
+    no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+  position: relative;
+  color: #fff;
+  @include md {
+    height: 100vh;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.47) 80%
+    );
+  }
+  .logo {
+    max-width: 550px;
+    margin-bottom: -30px;
+    @include md {
+      max-width: 380px;
+    }
+  }
+  .container {
+    max-width: 1300px;
+    margin: 0px auto;
+    display: grid;
+    justify-content: center;
+
+    align-items: center;
+
+    .main__content {
+      max-width: 1000px;
+      text-align: center;
+      display: grid;
+      grid-gap: 1rem;
+      h1 {
+        font-family: "canada-type-gibson", HelveticaNeue, Helvetica Neue,
+          Helvetica, sans-serif !important;
+        color: #fff;
+        font-size: 70px;
+        line-height: 70px;
+        margin-bottom: 10px;
+        font-weight: 800;
+      }
+      p {
+        font-family: "montserrat", HelveticaNeue, Helvetica Neue, Helvetica,
+          sans-serif;
+        font-weight: 400;
+        font-size: 27px;
+        line-height: 34px;
+        text-shadow: 0px 1px 10px black;
+        margin: 10px auto;
+        color: #fff;
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        .btn {
+          color: #fff !important;
+          background: #4598e2;
+          border: 1px solid #3890df;
+          box-shadow: 0 3px 0 #1f77c5;
+          display: block;
+          padding: 22px;
+          width: 285px;
+          text-align: center;
+          font-size: 16px;
+          font-family: "montserrat", HelveticaNeue, Helvetica Neue, Helvetica,
+            sans-serif;
+          font-weight: 600;
+          text-decoration: none;
+          border-radius: 4px;
+          border: none;
+          outline: none;
+          text-transform: uppercase;
+          letter-spacing: 0.08rem;
+          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.12);
+        }
+      }
+    }
+  }
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -3;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+  .welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    max-width: 650px;
+    filter: drop-shadow(1px 1px 6px #00000063);
+    display: none;
+  }
+  .banner-png-left {
+    position: absolute;
+    top: 0px;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background: url(../../public/images/Landing-page-pic/Cat-2.png) center
+      center/cover no-repeat;
+    background-size: contain;
+    background-position: bottom left;
+    z-index: -2;
+    @include md {
+      background-size: auto 95%;
+      left: -22%;
+    }
+  }
+  .banner-png-right {
+    position: absolute;
+    top: 0px;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    background: url(../../public/images/Landing-page-pic/Cat-3.png) center
+      center/cover no-repeat;
+    background-size: contain;
+    background-position: bottom right;
+    z-index: -2;
+    @include md {
+      background-size: auto 95%;
+      right: -22%;
+    }
+  }
+  &::after {
+    // content: "";
+    position: absolute;
+    top: 0;
+    right: -4%;
+    width: 100%;
+    height: 100%;
+    background: url(../../public/images/Landing-page-pic/Portal.png) no-repeat
+      center center;
+    background-size: contain;
+    background-position: center left;
+    transform: scale(0.6) perspective(1000px) rotateY(73deg) rotateX(-2deg)
+      translate3d(4rem, 0rem, -28rem);
+    filter: hue-rotate(136deg);
+    z-index: -2;
+    @include md {
+      transform: scale(0.6) perspective(1000px) rotateY(73deg) rotateX(-2deg)
+        translate3d(4rem, 17rem, -28rem);
+    }
+  }
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 10px;
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+      align-items: center;
+      @include md {
+        grid-template-columns: 1fr;
+      }
+      .start {
+        h1 {
+          margin-bottom: 0;
+          img {
+            max-width: 200px;
+            margin-left: -14px;
+            filter: drop-shadow(2px 4px 6px #0000004d);
+            margin-right: 15px;
+            width: 100%;
+          }
+        }
+        p {
+          font-size: 1.5rem;
+          color: #fff;
+          text-align: start;
+          margin-bottom: 20px;
+          width: 85%;
+          text-shadow: 1px 1px 0px #df4367;
+        }
+        .btns {
+          display: flex;
+          justify-content: start;
+          gap: 10px;
+          @include mobile {
+            flex-direction: column;
+          }
+          a {
+            > button.first {
+              background: #ff50b6;
+              color: #fff;
+              border: 1px solid #ff50b6;
+              border-radius: 47px;
+              padding: 8px 35px;
+              font-size: 30px;
+              font-weight: 300;
+              line-height: 1.5;
+              cursor: pointer;
+              margin-top: 20px;
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              svg {
+                fill: #fff;
+                transform: scale(1.2) translateY(-2px);
+              }
+            }
+            > button.second {
+              background: none;
+              color: #ff50b6;
+              border: 5px solid #ff50b6;
+              padding: 8px 35px;
+              font-size: 30px;
+              font-weight: 900;
+              line-height: 1.5;
+              margin-top: 20px;
+              border-radius: 60px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .end {
+        height: 100%;
+        display: flex;
+        align-items: end;
+        width: 100%;
+        @include md {
+          display: none;
+        }
+        .img {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          img {
+            max-width: 600px;
+            margin-left: -14px;
+            filter: drop-shadow(2px 4px 6px #0000004d);
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.header__btn-text {
+  svg {
+    height: 45px;
+    width: 50px;
+    border-radius: 6px;
+    padding: 5px 0px;
+    fill: #fff;
+  }
+}
+
+@keyframes parallax_fg {
+  0% {
+    background-position: 3840px 100%;
+  }
+
+  100% {
+    background-position: 550px 100%;
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-300vh);
+    opacity: 0;
+  }
+}
+
+.marquee-container {
+  overflow-x: unset !important;
+  display: flex !important;
+  flex-direction: row !important;
+  position: relative;
+  width: 100%;
+}
+
+.modal- {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #607d8b;
+  padding: 40px 0px 20px 0px;
+  border-radius: 0px;
+  transition: 0.3s transform, opacity 0.3s;
+  transition-timing-function: ease-out;
+  z-index: 1111;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  max-width: 350px;
+  width: 100%;
+  height: 200px;
+  display: grid;
+  place-content: center;
+
+  box-shadow: 0 0 10px #00000080;
+
+  > svg {
+    position: fixed;
+    cursor: pointer;
+    top: 20px;
+    right: 5%;
+    fill: #fff;
+  }
+
+  p {
+    font-size: 25px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  .ico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      transform: scale(3);
+      margin-bottom: 30px;
+    }
+  }
+
+  .warn {
+    svg {
+      fill: #f1c40f;
+    }
+  }
+
+  .info {
+    svg {
+      fill: #3498db;
+    }
+  }
+
+  .error {
+    svg {
+      fill: #e74c3c;
+    }
+  }
+
+  .success {
+    svg {
+      fill: #07bc0c;
+    }
+  }
+}
+
+.shadow- {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #00000057;
+  height: 100%;
+  z-index: 1110;
+  cursor: pointer;
+}

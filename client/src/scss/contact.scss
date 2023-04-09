@@ -1,0 +1,119 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+.contact {
+  height: auto;
+  padding: 150px 40px 110px;
+  z-index: 100;
+  position: relative;
+  background:#ff8a98;
+  @include md {
+    padding: 40px 20px;
+  }
+
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 0 10px #0000001a;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+
+    @include lg {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      color: #484747;
+      font-size: 3rem;
+      line-height: 1.1;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 35px;
+      margin: 0;
+      text-align: start;
+      @include md {
+        font-size: 2rem;
+      }
+    }
+
+    P {
+      color: #484747;
+      font-size: 1rem;
+      line-height: 20px;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 0px;
+      font-weight: 600;
+      text-align: start;
+      width: 90%;
+
+      @include lg {
+        width: 100%;
+      }
+    }
+
+    .text {
+      color: #fff;
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 600;
+      text-align: center;
+      width: 70%;
+      text-align: start;
+
+      @include lg {
+        width: 100%;
+      }
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      padding: 40px 0;
+      transform: translateX(12px);
+      gap: 2rem;
+
+      svg {
+        fill: #fff;
+        transform: scale(2.5);
+        transition: 0.3s all ease-out;
+
+        &:hover {
+          fill: gold;
+        }
+      }
+    }
+
+    .item:nth-child(2) {
+      text-align: end;
+      position: relative;
+
+      @include lg {
+        display: none;
+      }
+
+      img {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        max-width: 450px; 
+      }
+    }
+
+    .item:nth-child(1) {
+      padding: 50px 0 30px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @include lg {
+        padding: 40px;
+      }
+    }
+  }
+}

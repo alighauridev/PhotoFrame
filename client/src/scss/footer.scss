@@ -1,0 +1,59 @@
+@import "./variable.scss";
+@import "./media.scss";
+
+footer {
+  position: relative;
+  z-index: 100;
+
+  background-size: 100% 100%;
+  margin-top: -170px;
+  padding: 50px 10px 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  > .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 45px 15px 35px;
+
+    > .grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+
+      .logo {
+        // padding: 10px 0;
+        text-align: center;
+        // margin-bottom: 20px;
+        cursor: pointer;
+
+        img {
+          max-width: 250px;
+        }
+      }
+
+      p {
+        color: hsla(0, 0%, 100%, 0.5);
+        text-align: center;
+        span {
+          color: hsla(0, 0%, 100%, 0.5);
+        }
+        h6 {
+          color: #fff;
+          font-size: 20px;
+          line-height: 25px;
+          font-weight: 600;
+          text-align: right;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          @include md {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
