@@ -210,7 +210,8 @@
                 text-align: center;
                 gap: 40px;
                 padding-top: 80px;
-
+padding-bottom: 40px;
+border-bottom: 2px solid #DDDDDD;
                 @include lg {
                     grid-template-columns: 1fr;
                 }
@@ -232,7 +233,20 @@
                 }
             }
         }
-
+.detail{
+    border-bottom: 1px solid #DDDDDD;
+    padding: 20px 0;
+    h1{
+      color: #7C5050;;
+    }
+    button{
+        padding: 10px 30px;
+        margin-top: 20px ;
+        border: none;
+        color: white;
+        background: #292929;
+    }
+}
 
     }
 

@@ -2,7 +2,7 @@ import { React, useEffect, useState, useRef } from 'react'
 import Navigation from './/Navigation'
 import '..//scss/Product.scss'
 import { colors, depth, popularframe, product, style, width } from '..//assests/data'
-import { Pagination,Typography,Rating } from '@mui/material'
+import { Pagination, Typography, Rating } from '@mui/material'
 
 
 
@@ -11,7 +11,7 @@ import { Pagination,Typography,Rating } from '@mui/material'
 
 
 const Product = () => {
-    const [value,setValue]=useState();
+    const [value, setValue] = useState();
     return (
         <div className='product-parent'>
 
@@ -245,7 +245,7 @@ const Product = () => {
                                         <h4>{map.h4}</h4>
                                         <p>{map.p}</p>
                                         <Typography component="legend"></Typography>
-                                        <Rating style={{fontSize:'18px',marginTop:'5px'}}
+                                        <Rating style={{ fontSize: '18px', marginTop: '5px' }}
                                             name="simple-controlled"
                                             value={value}
                                             onChange={(event, newValue) => {
@@ -257,6 +257,49 @@ const Product = () => {
                             })
                         }
                     </div>
+
+                    <div className='sort-parent' style={{ margin: '40px 0' }}>
+
+                        <div className='sort-section' >
+                            <h4>ITEMS PER PAGE </h4>
+                            <select style={{ padding: '5px 40px' }}>
+                                <option>36</option>
+                                <option>40</option>
+                                <option>80</option>
+                            </select>
+
+                        </div>
+                        <div className='sort-section' >
+                            <Pagination count={5} />
+
+                        </div>
+                    </div>
+
+
+
+                    {/* SECTION DETAIL */}
+
+                    <center>
+                        <div className='detail'>
+                            <h1>Custom Frame Styles</h1>
+                            <p>
+                                Do you prefer modern picture frames or more antique designs? No matter your preference, the perfect option for your space does exist! Choose a bold ornate frame in metal or wood to capture a framed canvas print's antique element, or get a more contemporary style with a sleek, streamlined frame. To get creative, try mixing and matching different custom photo frames for a unique, timeless look!
+                            </p>
+                        </div>
+                        <div className='detail'>
+                            <h1>Picture Frame Sizes</h1>
+                            <p>
+                            Whether you’re looking for large picture frames or small picture frames, we carry options in a HUGE variety of common dimensions. Shop our selection by size from 6x6 inch frames up to 40x60-inch frames. Don’t see the size you need? No problem. Here, you can customize your frames up to 1/8 of an inch.
+                            </p>
+                        </div>
+                        <div className='detail'>
+                            <h1>Custom Frame Finishes and Colors</h1>
+                            <p>
+                            Select the frame colors and finishes you like best to create the aesthetic you want. Find neutral wood finishes, classic gold and silver metallics, and more vibrant colors to further personalize your art and your living space. Make your space picture-perfect with a wide range of custom frames online for your favorite art pieces or digital memories
+                            </p>
+                            <button>Read More</button>
+                        </div>
+                    </center>
                 </div>
 
 
