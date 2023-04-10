@@ -1,0 +1,109 @@
+@import './media.scss';
+
+.product-parent {
+    .first-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 95%;
+        margin: auto;
+        gap: 40px;
+
+        @include lg {
+            grid-template-columns: 1fr;
+        }
+
+        .text {
+            border: 2px solid #DDDDDD;
+            padding: 30px;
+
+            h1 {
+                font-size: 48px;
+                margin: 0;
+                padding: 0;
+                color: #824E4E;
+
+
+            }
+
+            h5 {
+                font-size: 25px;
+                font-weight: 400;
+                color: #3E3C41;
+            }
+
+            p {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 23px;
+
+
+            }
+        }
+
+        .img {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .colors-filter-product-parent {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        width: 95%;
+        margin: auto;
+        padding-top: 40px;
+
+        .colors-filter {
+            .colors-button-parent {
+                display: grid;
+                grid-template-columns: repeat(5,1fr);
+                padding: 20px 0;
+                border-bottom: 2px solid #DDDDDD ;
+                button {
+                    padding: 10px;
+                    border-radius: 80px;
+                    border: none;
+                    margin-top: 15px;
+                    cursor: pointer;
+
+                }
+                .blac{
+                    background: black;
+                }
+                .blue{
+                    background: blue;
+                }
+                .brown{
+                    background: brown;
+                }
+                .cream{
+                    background: pink;
+                }
+                .yellow{
+                    background: yellow;
+                }
+                .gray{
+                    background: gray;
+                }
+                .green{
+                    background: green;
+                }
+                .white{
+                    background: rgb(201, 198, 198);
+                }
+                .red{
+                    background: red;
+                }
+                .pink{
+                    background: rgb(247, 156, 239);
+                }
+                .purple{
+                    background: purple;
+                }
+            }
+        }
+
+        .product-image {}
+    }
+}

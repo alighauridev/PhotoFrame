@@ -240,3 +240,40 @@ export const works = [
     src: '/images/Enhancement contents/3. With weapon.webp',
   },
 ]
+
+export const colors=[
+  {
+    class:'blac'
+  },
+  {
+    class:'blue'
+  },
+  {
+    class:'brown'
+  },
+  {
+    class:'cream'
+  },
+  {
+    class:'yellow'
+  },
+  {
+    class:'gray'
+  },
+  {
+    class:'green'
+  },
+  {
+    class:'white'
+  },
+  {
+    class:'red'
+  },
+  {
+    class:'pink'
+  },
+  {
+    class:'purple'
+  },
+  
+]
