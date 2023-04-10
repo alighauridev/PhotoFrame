@@ -241,39 +241,112 @@ export const works = [
   },
 ]
 
-export const colors=[
+export const colors = [
   {
-    class:'blac'
+    class: 'blac'
   },
   {
-    class:'blue'
+    class: 'blue'
   },
   {
-    class:'brown'
+    class: 'brown'
   },
   {
-    class:'cream'
+    class: 'cream'
   },
   {
-    class:'yellow'
+    class: 'yellow'
   },
   {
-    class:'gray'
+    class: 'gray'
   },
   {
-    class:'green'
+    class: 'green'
   },
   {
-    class:'white'
+    class: 'white'
   },
   {
-    class:'red'
+    class: 'red'
   },
   {
-    class:'pink'
+    class: 'pink'
   },
   {
-    class:'purple'
+    class: 'purple'
   },
-  
+
+]
+
+export const popularframe = [
+  {
+    size: `6" x 6" (46)`,
+  },
+  {
+    size: `8" x 8" (85)`,
+  },
+  {
+    size: `8" x 10" (90)`,
+  },
+  {
+    size: `8.5" x 11" (85)`,
+  },
+  {
+    size: `9" x 12" (75)`,
+  },
+  {
+    size: `14" x 18" (55)`,
+  }
+
+]
+
+export const style = [
+  {
+    type: 'Modren (21)',
+  },
+  {
+    type: 'Ornate (5)',
+  },
+  {
+    type: 'Rustic (6)',
+  },
+  {
+    type: 'Tradational (16)',
+  },
+  {
+    type: 'Electic (9)',
+  },
+]
+
+export const width = [
+  {
+    type: `Narrow less than 1.5" (22)`,
+  },
+  {
+    type: `Medium  1.5" to 2.75" (12)`,
+  },
+  {
+    type: `Wide  2.75" to 3.5" (3)`,
+  },
+  {
+    type: `Extra  3.5 Upto (10)`,
+  },
+  {
+    type: 'Electic (9)',
+  },
+]
+export const depth = [
+  {
+    type: `Shallow less than 0.5" (5)`,
+  },
+  {
+    type: `Medium  0.5" to 0.75" (12)`,
+  },
+  {
+    type: `Deep 0.75" to 1.5" (3)`,
+  },
+  {
+    type: `Extra Deep  1.5 Upto (10)`,
+  },
+
 ]
