@@ -3,7 +3,7 @@ import Navigation from './/Navigation'
 import '..//scss/Product.scss'
 import { colors, depth, popularframe, product, style, width } from '..//assests/data'
 import { Pagination, Typography, Rating } from '@mui/material'
-
+import Footer from '..//components/Footer'
 
 
 
@@ -309,6 +309,7 @@ const Product = () => {
 
             </div>
 
+<Footer/>
         </div>
     )
 }
