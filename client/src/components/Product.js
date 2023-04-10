@@ -1,9 +1,17 @@
-import React from 'react'
+import { React, useEffect, useState, useRef } from 'react'
 import Navigation from './/Navigation'
 import '..//scss/Product.scss'
-import { colors, depth, popularframe, style, width } from '..//assests/data'
-import { Pagination } from '@mui/material'
+import { colors, depth, popularframe, product, style, width } from '..//assests/data'
+import { Pagination,Typography,Rating } from '@mui/material'
+
+
+
+
+
+
+
 const Product = () => {
+    const [value,setValue]=useState();
     return (
         <div className='product-parent'>
 
@@ -217,16 +225,38 @@ const Product = () => {
                                 <option>40</option>
                                 <option>80</option>
                             </select>
-                           
+
                         </div>
                         <div className='sort-section' >
-                        <Pagination count={5} />
-                           
+                            <Pagination count={5} />
+
                         </div>
                     </div>
 
 
-{/* PRODUCT IMAGES START HERE */}
+                    {/* PRODUCT IMAGES START HERE */}
+
+                    <div className='product-images-grid'>
+                        {
+                            product.map((map) => {
+                                return (
+                                    <div>
+                                        <img src={map.img} />
+                                        <h4>{map.h4}</h4>
+                                        <p>{map.p}</p>
+                                        <Typography component="legend"></Typography>
+                                        <Rating style={{fontSize:'18px',marginTop:'5px'}}
+                                            name="simple-controlled"
+                                            value={value}
+                                            onChange={(event, newValue) => {
+                                                setValue(newValue);
+                                            }}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
 
 

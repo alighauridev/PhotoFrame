@@ -350,3 +350,83 @@ export const depth = [
   },
 
 ]
+
+export const product=[
+  {
+    img:'./images/2.webp',
+    h4:'WALNUT PICTURE FRAME WITH NATURAL LINER FRC13',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/3.webp',
+    h4:'Copper Wood Picture Frame with Botanical Motif Edges and Dark Patina VN4',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/4.webp',
+    h4:'MATTE BLACK METAL PHOTO & ART PICTURE FRAME 111MBLK',
+    p:'starting at $20.96',
+  },
+  {
+    img:'./images/5.webp',
+    h4:'PLEIN AIR GOLD LEAF WOOD PICTURE FRAME PL15',
+    p:'starting at $44.06',
+  },
+  {
+    img:'./images/6.webp',
+    h4:'WHITEWASH WITH GRAY WOOD PICTURE FRAME BWC4',
+    p:'starting at $59.12',
+  },
+  {
+    img:'./images/7.webp',
+    h4:'BLACK WOOD GRAIN CANVAS BOX PICTURE FRAME CB4',
+    p:'starting at $35.84',
+  },
+  {
+    img:'./images/8.webp',
+    h4:'GOLD LEAF CANVAS FLOATER FRAME CFL12',
+    p:'starting at $36.88',
+  },
+  {
+    img:'./images/9.webp',
+    h4:'CLASSIC SATIN BLACK WOOD PICTURE FRAME GLD7',
+    p:'starting at $59.12',
+  },
+  {
+    img:'./images/10.webp',
+    h4:'NATURAL CLASSIC WOOD CANVAS FLOATER FRAME MLCF01',
+    p:'starting at $35.84',
+  },
+  {
+    img:'./images/11.webp',
+    h4:'GOLD LEAF CANVAS FLOATER FRAME CFL12',
+    p:'starting at $36.88',
+  },
+  {
+    img:'./images/12.webp',
+    h4:'CLASSIC SATIN BLACK WOOD PICTURE FRAME GLD7',
+    p:'starting at $59.12',
+  },
+  {
+    img:'./images/13.webp',
+    h4:'NATURAL CLASSIC WOOD CANVAS FLOATER FRAME MLCF01',
+    p:'starting at $35.84',
+  },
+  {
+    img:'./images/14.webp',
+    h4:'GOLD LEAF CANVAS FLOATER FRAME CFL12',
+    p:'starting at $36.88',
+  },
+  {
+    img:'./images/15.webp',
+    h4:'CLASSIC SATIN BLACK WOOD PICTURE FRAME GLD7',
+    p:'starting at $59.12',
+  },
+
+  {
+    img:'./images/17.webp',
+    h4:'NATURAL CLASSIC WOOD CANVAS FLOATER FRAME MLCF01',
+    p:'starting at $35.84',
+  },
+
+]
