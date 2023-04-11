@@ -240,3 +240,213 @@ export const works = [
     src: '/images/Enhancement contents/3. With weapon.webp',
   },
 ]
+
+export const colors = [
+  {
+    class: 'blac'
+  },
+  {
+    class: 'blue'
+  },
+  {
+    class: 'brown'
+  },
+  {
+    class: 'cream'
+  },
+  {
+    class: 'yellow'
+  },
+  {
+    class: 'gray'
+  },
+  {
+    class: 'green'
+  },
+  {
+    class: 'white'
+  },
+  {
+    class: 'red'
+  },
+  {
+    class: 'pink'
+  },
+  {
+    class: 'purple'
+  },
+
+]
+
+export const popularframe = [
+  {
+    size: `6" x 6" (46)`,
+  },
+  {
+    size: `8" x 8" (85)`,
+  },
+  {
+    size: `8" x 10" (90)`,
+  },
+  {
+    size: `8.5" x 11" (85)`,
+  },
+  {
+    size: `9" x 12" (75)`,
+  },
+  {
+    size: `14" x 18" (55)`,
+  }
+
+]
+
+export const style = [
+  {
+    type: 'Modren (21)',
+  },
+  {
+    type: 'Ornate (5)',
+  },
+  {
+    type: 'Rustic (6)',
+  },
+  {
+    type: 'Tradational (16)',
+  },
+  {
+    type: 'Electic (9)',
+  },
+]
+
+export const width = [
+  {
+    type: `Narrow less than 1.5" (22)`,
+  },
+  {
+    type: `Medium  1.5" to 2.75" (12)`,
+  },
+  {
+    type: `Wide  2.75" to 3.5" (3)`,
+  },
+  {
+    type: `Extra  3.5 Upto (10)`,
+  },
+  {
+    type: 'Electic (9)',
+  },
+]
+export const depth = [
+  {
+    type: `Shallow less than 0.5" (5)`,
+  },
+  {
+    type: `Medium  0.5" to 0.75" (12)`,
+  },
+  {
+    type: `Deep 0.75" to 1.5" (3)`,
+  },
+  {
+    type: `Extra Deep  1.5 Upto (10)`,
+  },
+
+]
+
+export const product=[
+  {
+    img:'./images/2.webp',
+    h4:'WALNUT PICTURE FRAME WITH NATURAL LINER FRC13',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/3.webp',
+    h4:'Copper Wood Picture Frame with Botanical Motif Edges and Dark Patina VN4',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/4.webp',
+    h4:'MATTE BLACK METAL PHOTO & ART PICTURE FRAME 111MBLK',
+    p:'starting at $20.96',
+  },
+  {
+    img:'./images/5.webp',
+    h4:'PLEIN AIR GOLD LEAF WOOD PICTURE FRAME PL15',
+    p:'starting at $44.06',
+  },
+  {
+    img:'./images/6.webp',
+    h4:'WHITEWASH WITH GRAY WOOD PICTURE FRAME BWC4',
+    p:'starting at $59.12',
+  },
+  {
+    img:'./images/7.webp',
+    h4:'BLACK WOOD GRAIN CANVAS BOX PICTURE FRAME CB4',
+    p:'starting at $35.84',
+  },
+  {
+    img:'./images/8.webp',
+    h4:'GOLD LEAF CANVAS FLOATER FRAME CFL12',
+    p:'starting at $36.88',
+  },
+  {
+    img:'./images/9.webp',
+    h4:'CLASSIC SATIN BLACK WOOD PICTURE FRAME GLD7',
+    p:'starting at $59.12',
+  },
+  {
+    img:'./images/10.webp',
+    h4:'NATURAL CLASSIC WOOD CANVAS FLOATER FRAME MLCF01',
+    p:'starting at $35.84',
+  },
+  {
+    img:'./images/11.webp',
+    h4:'GOLD LEAF CANVAS FLOATER FRAME CFL12',
+    p:'starting at $36.88',
+  },
+  {
+    img:'./images/12.webp',
+    h4:'CLASSIC SATIN BLACK WOOD PICTURE FRAME GLD7',
+    p:'starting at $59.12',
+  },
+  {
+    img:'./images/13.webp',
+    h4:'NATURAL CLASSIC WOOD CANVAS FLOATER FRAME MLCF01',
+    p:'starting at $35.84',
+  },
+  {
+    img:'./images/14.webp',
+    h4:'GOLD LEAF CANVAS FLOATER FRAME CFL12',
+    p:'starting at $36.88',
+  },
+  {
+    img:'./images/15.webp',
+    h4:'CLASSIC SATIN BLACK WOOD PICTURE FRAME GLD7',
+    p:'starting at $59.12',
+  },
+
+  {
+    img:'./images/17.webp',
+    h4:'NATURAL CLASSIC WOOD CANVAS FLOATER FRAME MLCF01',
+    p:'starting at $35.84',
+  },
+
+]
+
+export const productcopy=[
+  {
+    img:'./images/2.webp',
+    h4:'WALNUT PICTURE FRAME WITH NATURAL LINER FRC13',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/3.webp',
+    h4:'Copper Wood Picture Frame with Botanical Motif Edges and Dark Patina VN4',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/4.webp',
+    h4:'MATTE BLACK METAL PHOTO & ART PICTURE FRAME 111MBLK',
+    p:'starting at $20.96',
+  },
+  
+
+]
