@@ -5,6 +5,10 @@ const frameImageSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    corner: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -17,7 +21,7 @@ const frameImageSchema = new mongoose.Schema({
         type: String,
         default: 'Classic'
     },
-    Material: {
+    material: {
         type: String,
         default: 'Wooden'
     },

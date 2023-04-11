@@ -49,7 +49,7 @@ frameRoutes.get(
 frameRoutes.delete(
     "/:id",
 
-    admin,
+    // admin,
     asyncHandler(async (req, res) => {
         const frame = await FrameImage.findById(req.params.id);
         if (frame) {
@@ -86,9 +86,9 @@ frameRoutes.put(
 // Create single Product
 frameRoutes.post(
     "/create",
-    admin,
+    // admin,
     asyncHandler(async (req, res) => {
-        const { title, description, image, type } = req.body;
+        const { title, description, image, type, material, corner } = req.body;
         const exist = await FrameImage.findOne({ title });
         if (exist) {
             res.status(400);
@@ -98,10 +98,12 @@ frameRoutes.post(
                 title,
                 description,
                 image,
-                type
+                type,
+                material,
+                corner
             });
             if (frame) {
-                const createFrame = await FrameImage.save();
+                const createFrame = await frame.save();
                 res.status(201).json(createFrame);
             } else {
                 res.status(400);

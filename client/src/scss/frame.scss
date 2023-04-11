@@ -15,25 +15,25 @@
     .top-left-corner {
       top: 0;
       left: 0;
-      transform: rotate(-90deg);
+      transform: rotate(0deg);
     }
 
     .top-right-corner {
       top: 0;
       right: 0;
-      transform: rotate(0deg);
+      transform: rotateY(180deg);
     }
 
     .bottom-left-corner {
       bottom: 0;
       left: 0;
-      transform: rotate(90deg);
+      transform: rotateX(180deg);
     }
 
     .bottom-right-corner {
       bottom: 0;
       right: 0;
-      transform: rotate(180deg);
+      transform: rotateX(180deg) rotateX(180deg);
     }
   }
 }

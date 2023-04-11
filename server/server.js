@@ -13,6 +13,7 @@ const app = express();
 connectDb();
 dotenv.config();
 app.use(express.json());
+app.use(cors());
 console.log(process.env.PORT);
 
 // app.get("/api/products", (req, res) => {
@@ -26,7 +27,7 @@ console.log(process.env.PORT);
 
 app.use("/api/users", userRoutes);
 app.use("/api/import", ImportData);
-app.use("/api/products", frameRoutes);
+app.use("/api/frame", frameRoutes);
 app.use("/api/orders", orderRoutes);
 app.use(notFound);
 app.use(errorHandler);

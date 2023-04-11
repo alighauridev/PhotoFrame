@@ -1,0 +1,30 @@
+.admin__panel h1 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.admin__panel .frames {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.admin__panel .frames .frame .img {
+    width: 100%;
+}
+.admin__panel .frames .frame  {
+    width: 100%;
+    box-shadow: 0 0 5px #e0e0e0;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+.admin__panel .frames .frame .img img {
+    width: 100%;
+    height: 300px;
+}
+
+.admin__panel .frames .frame .details h3 {
+    font-size: 15px;
+}
