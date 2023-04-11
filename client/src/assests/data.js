@@ -430,3 +430,23 @@ export const product=[
   },
 
 ]
+
+export const productcopy=[
+  {
+    img:'./images/2.webp',
+    h4:'WALNUT PICTURE FRAME WITH NATURAL LINER FRC13',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/3.webp',
+    h4:'Copper Wood Picture Frame with Botanical Motif Edges and Dark Patina VN4',
+    p:'starting at $39.54',
+  },
+  {
+    img:'./images/4.webp',
+    h4:'MATTE BLACK METAL PHOTO & ART PICTURE FRAME 111MBLK',
+    p:'starting at $20.96',
+  },
+  
+
+]

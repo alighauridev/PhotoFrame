@@ -14,6 +14,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import ImageDropZone from "./components/ImageDropZone";
 import Product from "./components/Product";
+import ProductDetail from "./components/ProductDetail";
 
 var Spinner = require("react-spinkit");
 function App() {
@@ -31,7 +32,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/frame" element={<ImageDropZone />} />
         </Routes> */}
-        <Product/>
+        {/* <Product/> */}
+        <ProductDetail/>
       </main>
     </>
   );
