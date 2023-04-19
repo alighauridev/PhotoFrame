@@ -30,7 +30,7 @@ const Banner = ({ timeline, ease }) => {
               Upload any image and customize the frame style in seconds.
               We'll print and frame your photo and ship it to your door.
             </p>
-            <Link to={'/frame'} >
+            <Link to={'/frames'} >
               <div className="btn">
                 Shop Frames
               </div>

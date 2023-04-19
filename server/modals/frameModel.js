@@ -5,16 +5,21 @@ const frameImageSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    corner: {
-        type: String,
-        required: true,
-    },
+
     title: {
         type: String,
         required: true,
     },
     description: {
         type: String,
+        required: true,
+    },
+    color: {
+        type: String,
+        required: true,
+    },
+    price: {
+        type: Number,
         required: true,
     },
     type: {
@@ -24,6 +29,10 @@ const frameImageSchema = new mongoose.Schema({
     material: {
         type: String,
         default: 'Wooden'
+    },
+    multiLayer: {
+        type: Boolean,
+        default: false
     },
     createdAt: {
         type: Date,

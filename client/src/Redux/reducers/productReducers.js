@@ -1,5 +1,8 @@
 import { getProductconstants } from "../constants/actionTypes";
 import {
+    FRAME_FILTERS_FAIL,
+    FRAME_FILTERS_REQUEST,
+    FRAME_FILTERS_SUCCESS,
     PRODUCT_CREATE_FAIL,
     PRODUCT_CREATE_REVIEW_FAIL,
     PRODUCT_CREATE_REVIEW_REQUEST,
@@ -27,9 +30,29 @@ export const allProductsReducer = (state = initialstate, action) => {
                 loading: false,
                 pages: action.payload.pages,
                 page: action.payload.page,
-                products: action.payload.products,
+                frames: action.payload.frames,
             };
         case PRODUCT_LIST_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+export const frameFilterReducer = (state = {
+    materials: [],
+    types: []
+}, action) => {
+    switch (action.type) {
+        case FRAME_FILTERS_REQUEST:
+            return { loading: true, state };
+        case FRAME_FILTERS_SUCCESS:
+            return {
+
+                materials: action.payload.materials,
+                types: action.payload.types,
+                colors: action.payload.colors
+            };
+        case FRAME_FILTERS_FAIL:
             return { loading: false, error: action.payload };
         default:
             return state;

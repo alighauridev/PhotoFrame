@@ -8,26 +8,74 @@ const frameRoutes = express.Router();
 frameRoutes.get(
     "/",
     asyncHandler(async (req, res) => {
-        const pageSize = 8;
+        const pageSize = 9;
         const page = Number(req.query.pageNumber) || 1;
-
-        const count = await FrameImage.find({ Category });
-        const frames = await FrameImage.find({})
+        const keyword = {};
+        if (req.query.type) {
+            keyword.type = { $in: req.query.type.split(",") };
+        }
+        if (req.query.material) {
+            keyword.material = { $in: req.query.material.split(",") };
+        }
+        if (req.query.color) {
+            keyword.color = req.query.color;
+        }
+        if (req.query.keyword) {
+            keyword.title = {
+                $regex: req.query.keyword,
+                $options: "i",
+            };
+        }
+        const count = await FrameImage.countDocuments(keyword);
+        const frames = await FrameImage.find(keyword)
             .limit(pageSize)
             .skip(pageSize * (page - 1))
             .sort({ _id: -1 });
-        res.json({ frames, page, pages: Math.ceil(count / pageSize) });
+
+        // Get all materials and types used in the frames
+        const materials = await FrameImage.distinct("material");
+        const types = await FrameImage.distinct("type");
+        const colors = await FrameImage.distinct("color");
+
+        res.json({
+            frames,
+            page,
+            pages: Math.ceil(count / pageSize),
+            materials,
+            types,
+            colors,
+        });
+    })
+);
+frameRoutes.get(
+    "/filters",
+    asyncHandler(async (req, res) => {
+        // Get all materials and types used in the frames
+        const materials = await FrameImage.distinct("material");
+        const types = await FrameImage.distinct("type");
+        const colors = await FrameImage.distinct("color");
+
+        res.json({ materials, types, colors });
     })
 );
 
 // GET all products
 frameRoutes.get(
     "/all",
-
     asyncHandler(async (req, res) => {
         const products = await FrameImage.find({}).sort({ _id: -1 });
 
         res.json(products);
+    })
+);
+frameRoutes.get(
+    "/filters",
+    asyncHandler(async (req, res) => {
+        const materials = await FrameImage.distinct("material");
+        const types = await FrameImage.distinct("type");
+        const colors = await FrameImage.distinct("color");
+
+        res.json({ materials, types, colors });
     })
 );
 
@@ -64,17 +112,33 @@ frameRoutes.delete(
 // EDIT single Product
 frameRoutes.put(
     "/:id",
-    admin,
     asyncHandler(async (req, res) => {
-        const { title, description, image, type } = req.body;
-        const frame = await FrameImage.findById(req.params.id);
+        const {
+            title,
+            description,
+            image,
+            type,
+            price,
+            multiLayer,
+            material,
+            color,
+        } = req.body;
+        const updatedFrame = await FrameImage.findByIdAndUpdate(
+            req.params.id,
+            {
+                title: title,
+                description: description,
+                image: image,
+                type: type,
+                price: price,
+                multiLayer: multiLayer,
+                material: material,
+                color: color,
+            },
+            { new: true }
+        );
 
-        if (frame) {
-            frame.title = title || frame.title;
-            frame.description = description || frame.description;
-            frame.image = image || frame.image;
-            frame.type = type || frame.type;
-            const updatedFrame = await FrameImage.save();
+        if (updatedFrame) {
             res.json(updatedFrame);
         } else {
             res.status(404);
@@ -88,7 +152,16 @@ frameRoutes.post(
     "/create",
     // admin,
     asyncHandler(async (req, res) => {
-        const { title, description, image, type, material, corner } = req.body;
+        const {
+            title,
+            description,
+            price,
+            image,
+            type,
+            material,
+            multiLayer,
+            color,
+        } = req.body;
         const exist = await FrameImage.findOne({ title });
         if (exist) {
             res.status(400);
@@ -100,7 +173,9 @@ frameRoutes.post(
                 image,
                 type,
                 material,
-                corner
+                price,
+                multiLayer,
+                color,
             });
             if (frame) {
                 const createFrame = await frame.save();
@@ -112,7 +187,5 @@ frameRoutes.post(
         }
     })
 );
-
-;
 
 export default frameRoutes;

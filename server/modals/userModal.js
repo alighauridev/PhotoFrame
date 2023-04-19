@@ -12,29 +12,20 @@ const userSchema = mongoose.Schema(
             required: true,
             unique: true,
         },
-        number: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        location: {
-            type: String,
-            required: true,
-        },
+
+
         password: {
             type: String,
             required: true,
         },
         isAdmin: {
             type: Boolean,
-            required: true,
-            default: false,
+            default: false
         },
 
+
     },
-    {
-        timestamps: true,
-    }
+
 );
 
 userSchema.pre("save", async function (next) {
@@ -49,5 +40,5 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("UserInfo", userSchema);
 export default User;

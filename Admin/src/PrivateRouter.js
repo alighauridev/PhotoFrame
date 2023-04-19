@@ -9,7 +9,7 @@ export default function PrivateRouter() {
     const { userInfo } = UserLogin;
     return (
         <>
-            {userInfo && userInfo.isAdmin ? <Outlet /> : <Navigate to="/login" />};
+            {userInfo?.isAdmin ? <Outlet /> : <Navigate to="/login" />};
         </>
 
     )

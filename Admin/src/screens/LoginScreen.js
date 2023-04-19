@@ -4,15 +4,15 @@ import { login } from "../Redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { USER_LOGIN_SUCCESS } from "../Redux/constants/userConstants";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const location = useLocation();
-    const redirect = location.search ? location.search.split("=")[1] : "/";
     const dispatch = useDispatch();
     const UserLogin = useSelector((state) => state.UserLogin);
     const { loading, error, userInfo } = UserLogin;
+    const [toggle, settoggle] = useState(false);
     const navigate = useNavigate();
 
     const validator = () => {
@@ -26,20 +26,19 @@ const Login = () => {
             return true;
         }
     };
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
-
-        if (validator()) {
-            dispatch(login(email, password));
+        try {
+            const { data } = await axios.post("/api/users/login", { email, password });
+            dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+            navigate('/');
+        } catch (error) {
+            toast.error(error.response.data.message)
         }
     };
-    useEffect(() => {
-        if (userInfo?.name) {
-            navigate("/");
-        } else {
-            toast.error(userInfo);
-        }
-    }, [navigate, userInfo, redirect]);
+
+
+
     return (
         <>
             <div

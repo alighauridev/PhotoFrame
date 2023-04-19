@@ -9,7 +9,7 @@
   @include md {
     padding: 60px 10px 200px;
   }
-  .ore{
+  .ore {
     position: absolute;
     top: 40%;
     z-index: 120;
@@ -25,13 +25,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(../../public/images/Background/faq.png) center center/cover no-repeat;
+    background: url(../../public/images/Background/faq.png) center center/cover
+      no-repeat;
     background-position: top center;
     background-size: 100% auto;
     z-index: -1;
   }
   .container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 40px auto;
 
     .heading {
@@ -52,7 +53,7 @@
           font-size: 5rem;
         }
       }
-      p{
+      p {
         text-align: center;
         color: white;
         font-size: 1.2rem;
@@ -97,13 +98,12 @@
             margin-top: 0 !important;
             border-bottom: 0px solid black;
             margin-bottom: 10px;
-            border-radius: 0  !important;
-            @include md{
+            border-radius: 0 !important;
+            @include md {
               padding: 5px 0px;
             }
 
             li {
-           
               font-weight: 500;
               font-size: 18px;
             }

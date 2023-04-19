@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { getFilterProductReducer } from "./filterProductReducer";
 import { cartReducer } from "./cartReducer";
-import { allProductsReducer, productCreateReviewReducer, singleProductReducer } from "./productReducers";
+import { allProductsReducer, frameFilterReducer, productCreateReviewReducer, singleProductReducer } from "./productReducers";
 import {
   userLoginReducer,
   userRegisterReducer,
@@ -16,6 +16,7 @@ import {
 } from "./orderReducers";
 const RootReducer = combineReducers({
   Products: allProductsReducer,
+  Filters: frameFilterReducer,
   ProductDetails: singleProductReducer,
   ProductCreateReview: productCreateReviewReducer,
   Cart: cartReducer,

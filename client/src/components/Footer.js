@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import '../scss/footer.scss'
-import {FaFacebook,FaLinkedinIn} from 'react-icons/fa'
-import {BsInstagram} from 'react-icons/bs'
-import {AiOutlineTwitter} from 'react-icons/ai'
+import { FaFacebook, FaLinkedinIn } from 'react-icons/fa'
+import { BsInstagram } from 'react-icons/bs'
+import { AiOutlineTwitter } from 'react-icons/ai'
 const Footer = () => {
   return (
     <Fragment>
@@ -31,28 +31,28 @@ const Footer = () => {
             <div className="footer-col">
               <h4>online shop</h4>
               <ul>
-                <li><a href="#">watch</a></li>
-                <li><a href="#">bag</a></li>
-                <li><a href="#">shoes</a></li>
-                <li><a href="#">dress</a></li>
+                <li><a href="#">Wooden</a></li>
+                <li><a href="#">Classic</a></li>
+                <li><a href="#">Metalic</a></li>
+                <li><a href="#">Glass</a></li>
               </ul>
             </div>
             <div className="footer-col">
               <h4>follow us</h4>
               <div className="social-links">
-                <a href="#"><FaFacebook/></a>
-                <a href="#"><BsInstagram/></a>
-                <a href="#"><FaLinkedinIn/></a>
-                <a href="#"><AiOutlineTwitter/></a>
+                <a href="#"><FaFacebook /></a>
+                <a href="#"><BsInstagram /></a>
+                <a href="#"><FaLinkedinIn /></a>
+                <a href="#"><AiOutlineTwitter /></a>
               </div>
             </div>
           </div>
         </div>
-     
+
       </footer>
       <div>
-          <center><h4 style={{color:'white',background:'#000000f5',padding:'10px  0 10px 0'}}>Copyright All Rights Reserved Photo Frame</h4></center>
-        </div>
+        <center><h4 style={{ color: 'white', background: 'rgb(17, 17, 17)', padding: '10px  0 10px 0' }}>Copyright All Rights Reserved Photo Frame</h4></center>
+      </div>
     </Fragment>
   )
 }

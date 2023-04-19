@@ -8,7 +8,8 @@ header {
   z-index: 1001;
   transition: all 0.5s ease-out;
   // position: fixed;
-
+  box-shadow: #dddddd 0px -1px inset;
+  position: relative;
   p {
     text-align: center;
     font-size: 1.5rem;
@@ -21,7 +22,7 @@ header {
 
   .outer {
     .container {
-      max-width: 1300px;
+      max-width: 1200px;
       margin: 0 auto;
 
       .nav__grid {
@@ -94,7 +95,7 @@ header {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 18px;
+                font-size: 15px;
                 border-radius: 4px;
                 padding: 6px 12px;
                 letter-spacing: 1px;
@@ -107,7 +108,7 @@ header {
                 }
 
                 &:hover {
-                  color: #ffeb3b;
+                  color: #6fb3eb;
                 }
 
                 @include lg {
@@ -309,8 +310,6 @@ header {
 }
 
 .nav__active {
-  background: #000000c4;
-  backdrop-filter: blur(1px);
 }
 
 .auto_scroll {
@@ -368,7 +367,7 @@ header {
         right: -100%;
         overflow: hidden;
         justify-content: center !important;
-        background: #252b2d;
+        background: #fff;
         transition: all 400ms ease 0s;
 
         ul {
@@ -397,11 +396,11 @@ header {
           transform: none;
           right: 2.5%;
           z-index: 1111;
-          top: 15%;
+          top: 0px;
 
           > span {
             &:nth-child(1) {
-              background: #fff;
+              background: #000;
               height: 4px;
               left: 8px;
               position: absolute;
@@ -412,7 +411,7 @@ header {
             }
 
             &:nth-child(2) {
-              background: #fff;
+              background: #000;
               height: 4px;
               left: 8px;
               position: absolute;
@@ -423,7 +422,7 @@ header {
             }
 
             &:nth-child(3) {
-              background: #fff;
+              background: #000;
               height: 4px;
               left: 8px;
               position: absolute;

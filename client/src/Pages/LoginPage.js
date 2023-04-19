@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import ErrorMessage from "../component/ErrorMessage";
-import Loading from "../component/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../actions/userActions";
+import { login } from "../Redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -20,6 +18,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { toast, ToastContainer } from "react-toastify";
+import Navigation from "../components/Navigation";
 const useStyles = makeStyles((theme) => ({
     root: {
         "& > *": {
@@ -51,9 +50,9 @@ const LoginPage = ({ history }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const classes = useStyles();
     const userLogin = useSelector((state) => state.userLogin);
-    const { loading, error, userInfo } = userLogin;
+    const user = useSelector((state) => state.userInfo);
+    const { loading = false, userInfo } = userLogin || {};
     const navigate = useNavigate();
 
     const validator = () => {
@@ -75,15 +74,16 @@ const LoginPage = ({ history }) => {
         }
     };
     useEffect(() => {
-        if (userInfo?.name) {
-            navigate("/dashboard");
+        if (user?.token) {
+            navigate("/");
         } else {
             toast.error(userInfo);
         }
-    }, [navigate, userInfo]);
+    }, [dispatch, user]);
 
     return (
         <>
+            <Navigation />
             <ThemeProvider theme={theme}>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
@@ -156,15 +156,7 @@ const LoginPage = ({ history }) => {
                                 )}
                             </Button>
                             <Grid container>
-                                <Grid item xs>
-                                    <Link
-                                        href="#"
-                                        variant="body2"
-                                        className="MuiTypography-root MuiTypography-body2 MuiLink-root MuiLink-underlineAlways css-101ca9i-MuiTypography-root-MuiLink-root"
-                                    >
-                                        Forgot password?
-                                    </Link>
-                                </Grid>
+
                                 <Grid item>
                                     <Link
                                         to="/signup"
@@ -180,7 +172,6 @@ const LoginPage = ({ history }) => {
                     <Copyright sx={{ mt: 8, mb: 4 }} />
                 </Container>
             </ThemeProvider>
-
         </>
     );
 };

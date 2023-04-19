@@ -8,6 +8,7 @@ import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import frameRoutes from "./routes/frameRoutes.js";
+import inquiryRoutes from "./routes/InquiryRoutes.js";
 
 const app = express();
 connectDb();
@@ -29,6 +30,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/import", ImportData);
 app.use("/api/frame", frameRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/contact", inquiryRoutes);
 app.use(notFound);
 app.use(errorHandler);
 app.get("/", (req, res) => {

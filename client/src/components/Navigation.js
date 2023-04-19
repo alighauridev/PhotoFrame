@@ -10,6 +10,7 @@ import { FaTiktok } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { BsChevronUp } from "react-icons/bs";
+import { useSelector } from "react-redux";
 const Navigation = ({ }) => {
   const [navToggler, setNavToggler] = useState(false);
   const [navColor, setNavColor] = useState(false);
@@ -18,7 +19,7 @@ const Navigation = ({ }) => {
   const [length, setLength] = useState(null);
   const [modal, setmodal] = useState(false);
   const [lio, setlio] = useState(null);
-
+  const user = useSelector(state => state.UserLogin.userInfo)
   window.addEventListener("scroll", () => {
     if (window.pageYOffset > 300) {
       setScroll(true);
@@ -89,7 +90,7 @@ const Navigation = ({ }) => {
           <div className="container">
             <div className="nav__grid">
               <div className="logo">
-                <a href="https://twitter.com/kaiyocats" target={"_blank"}>
+                <a href="/" >
                   <img src="https://d29mtkonxnc5fw.cloudfront.net/site_assets/levelframes-glossier2.svg" alt="" />
                 </a>
               </div>
@@ -97,12 +98,20 @@ const Navigation = ({ }) => {
                 <ul>
                   {nav.map((ite, ind) => {
                     return (
-                      <li key={ind}>
-                        <a href={ite.path}>{ite.name}</a>
-                      </li>
+                      <>
+                        {
+                          ite.page ? <li key={ind}>
+                            <Link to={ite.path}>{ite.name}</Link>
+                          </li> : <li key={ind}>
+                            <a href={ite.path}>{ite.name}</a>
+                          </li>
+                        }
+                      </>
                     );
                   })}
-
+                  {
+                    !user?.token ? <li><Link to={'/login'}>Login</Link></li> : null
+                  }
                   <li className="nav__links">
                     {/* <a href="https://discord.gg/qTYfExSXZR" target="_blank">
                       <FaDiscord />
@@ -156,39 +165,8 @@ const Navigation = ({ }) => {
       >
         <BsChevronUp />
       </div>
-      <section
-        className={"modal-"}
-        style={
-          modal
-            ? {
-              transform: "  translate(-50%, -50%)  scale(1)",
-              opacity: "1",
-            }
-            : {}
-        }
-      >
-        {modal ? <ImCross onClick={() => setmodal(false)} /> : null}
 
-        <p
-          style={{
-            fontSize: "25px",
-            width: "80%",
-            margin: "auto",
-            textAlign: "center",
-            fontWeight: "100",
-            marginBottom: "15px",
-            lineHeight: "1.3",
-            color: "white",
-          }}
-        >
-          MINT DATE WILL BE ANNOUNCED SOON!
-        </p>
-      </section>
-      <div
-        className="shadow-"
-        style={modal ? { display: "block" } : { display: "none" }}
-        onClick={() => setmodal(false)}
-      ></div>
+
     </>
   );
 };

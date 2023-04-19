@@ -14,11 +14,10 @@
     width: 300px;
     height: 300px;
     object-fit: contain;
-    @include md{
+    @include md {
       display: none;
     }
   }
- 
 
   &::before {
     content: "";
@@ -65,12 +64,12 @@
   }
 
   .container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 40px auto;
-   
+
     .roadmap__grid {
       padding: 30px 20px;
-      @include md{
+      @include md {
         padding: 30px 5px;
       }
       p {
@@ -81,7 +80,7 @@
         margin: auto;
         line-height: 1.3;
         margin-top: 15px;
-        @include md{
+        @include md {
           font-size: 24px;
           width: 90%;
         }
@@ -91,7 +90,7 @@
         grid-template-columns: 1fr 1fr;
         grid-gap: 3rem 3rem;
         padding: 90px 20px;
-        @include md{
+        @include md {
           grid-template-columns: 1fr;
         }
         .item {
@@ -101,7 +100,7 @@
             font-family: "Bebas Neue";
             text-transform: uppercase;
             color: #fff;
-            @include md{
+            @include md {
               font-size: 4rem;
             }
           }
@@ -113,7 +112,7 @@
             li {
               font-size: 24px;
               color: #fff;
-              @include md{
+              @include md {
                 font-size: 20px;
               }
             }
@@ -138,7 +137,7 @@
           margin: auto;
           line-height: 1.3;
           margin-top: 15px;
-          @include md{
+          @include md {
             font-size: 24px;
           }
         }
