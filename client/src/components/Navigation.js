@@ -32,7 +32,6 @@ const Navigation = ({ }) => {
       setNavColor(false);
       setNavToggler(false);
     }
-    console.log(navColor);
   });
 
   function barBtn() {

@@ -42,29 +42,24 @@ Change your current directory to the project directory:
 
 Copy code
 cd client
-Installing Dependencies
-Install backend dependencies by running the following command in the project root directory:
-cd server
-npm install
-Navigate to the client directory:
-cd client
-Install frontend dependencies:
-sh
-Copy code
-npm install
 
 Running the Project
 Starting the Backend
 In the project root directory, start the backend server by running:
-
+npm install
 npm run start
-The backend server should now be running on http://localhost:4000.
+The backend server should now be running on http://localhost:5000.
 login password for admin panel is
+Starting the Admin Panel
+cd Admin
+npm install
+npm start
+The frontend server should now be running on http://localhost:4000.
 emali: admin@gmail.com
 password: admin
-Starting the Frontend
+Starting the client
 navigate to the client directory:
-
+npm install
 npm start
 The frontend server should now be running on http://localhost:3000.
 

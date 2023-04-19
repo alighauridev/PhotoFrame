@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import '../scss/inquiry.scss';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 function InquiryForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
-    const frame = useSelector((state => state.ProductDetails._id))
-    const navigate = useNavigate()
+    const frame = useSelector((state => state.ProductDetails.product._id))
+    const navigate = useNavigate();
+    // const { id } = useParams()
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { data } = await axios.post('/api/contact', { name, email, message, frame });
+        console.log({ name, email, message, frame });
         alert(data.message);
         navigate('/frames')
     };
