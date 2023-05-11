@@ -17,14 +17,7 @@ app.use(express.json());
 app.use(cors());
 console.log(process.env.PORT);
 
-// app.get("/api/products", (req, res) => {
-//     res.json(Products);
-// });
 
-// app.get("/api/products/:id", (req, res) => {
-//     const product = Products.find((item) => item.id == req.params.id);
-//     res.json(product);
-// });
 
 app.use("/api/users", userRoutes);
 app.use("/api/import", ImportData);

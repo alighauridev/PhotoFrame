@@ -94,7 +94,7 @@ const FrameAdmin = () => {
         description: "",
         type: "Classic",
         material: "Wooden",
-        color: null,
+        color: '#0000',
         price: null,
         image: null,
         multiLayer: false,
