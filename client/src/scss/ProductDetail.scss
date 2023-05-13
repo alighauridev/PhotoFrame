@@ -37,12 +37,23 @@
       margin: 20px 0;
     }
     .pic-frame{
-      button{
+      .upload-button{
         width: 100%;
         padding: 15px;
         border: none;
         color: white;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
         background: #272727;
+        button{
+          background: none;
+          border: none;
+          color: white;
+        }
+        span{
+          color: white !important;
+        }
       }
     }
     .file-chose {

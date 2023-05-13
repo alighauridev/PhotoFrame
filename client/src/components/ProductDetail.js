@@ -29,7 +29,7 @@ const ProductDetail = () => {
     return (
         <>
             <Navigation />
-            <Productbanner />
+           
             <div className='product-detail-parent'>
                 {/* NAVUGATION START HERE */}
 
@@ -37,26 +37,25 @@ const ProductDetail = () => {
 
                     <div className='pic-frame'>
                         <div className='file-chose'>
-                        <img src={image} />
+                            <img src={image} />
                         </div>
-                        
-<button><AiOutlineUpload style={{color:'white'}}/> Upload Your Picture</button>
+                        <div className="upload-button">
+                            <span><AiOutlineUpload/></span>
+                            <button> Upload Your Picture</button>
+                        </div>
 
-<div className="detail-description">
-    <h3>Description</h3>
+                        <div className="detail-description">
+                            <h3>Description</h3>
 
-    <p>This black, satin picture frame provides a timeless presentation of your art. With an extra deep rabbet for canvases up to 1 1/2", your art will be suspended and separated from the moulding for a true gallery look. Handcrafted from natural wood.
-        <br /><br />
-        Includes brackets and screws for attaching canvas to moulding, plus wire and heavy-duty D-rings for easy hanging.
-<br /><br />
-Measuring Tip: measure canvas at the corners for accurate sizing to account for any warping.
-    </p>
+                            <p>This black, satin picture frame provides a timeless presentation of your art. With an extra deep rabbet for canvases up to 1 1/2", your art will be suspended and separated from the moulding for a true gallery look. Handcrafted from natural wood.
+                                <br /><br />
+                                Includes brackets and screws for attaching canvas to moulding, plus wire and heavy-duty D-rings for easy hanging.
+                                <br /><br />
+                                Measuring Tip: measure canvas at the corners for accurate sizing to account for any warping.
+                            </p>
 
-    <li>Material: Wood</li>
-    <li>Width: 3/8" 
-</li>
-<li>Rabbet: 1 1/2"</li>
-</div>
+                            
+                        </div>
                     </div>
 
                     <div className='product-detail-review'>
