@@ -1,6 +1,7 @@
 import { React, useEffect, useState, useRef } from "react";
 import Navigation from ".//Navigation";
 import "..//scss/Product.scss";
+
 import {
     colors,
     depth,
@@ -16,6 +17,7 @@ import ProductsGrid from "./ProductsGrid";
 import { useDispatch, useSelector } from "react-redux";
 import { getFilters, getProducts } from "../Redux/actions/productActions";
 import { useParams } from "react-router-dom";
+import Productbanner from "./Productbanner";
 const Product = () => {
     const [value, setValue] = useState();
     const dispatch = useDispatch();
@@ -34,6 +36,7 @@ const Product = () => {
     return (
         <>
             <Navigation />
+            <Productbanner/>
             <div className="product-parent">
                 {/* SECOND MAIN GRID SECTION START HERE */}
                 <button style={{

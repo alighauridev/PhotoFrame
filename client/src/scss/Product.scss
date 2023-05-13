@@ -11,7 +11,7 @@
     grid-template-columns: 1fr 2fr;
     width: 95%;
     margin: auto;
-    gap: 40px;
+    gap: 30px;
 
     @include lg {
       grid-template-columns: 1fr;

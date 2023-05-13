@@ -2,6 +2,13 @@
 @import "./variable.scss";
 @import "./media.scss";
 .colors-filter {
+  .frame-material{
+    h4{
+      border-bottom: 1px solid #dddddd;
+    width: 60%;
+      padding-bottom: 15px;
+    }
+  }
   .btn__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

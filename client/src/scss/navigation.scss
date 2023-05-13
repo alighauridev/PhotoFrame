@@ -1,6 +1,9 @@
 @import "./variable.scss";
 @import "./media.scss";
-
+@import url('https://fonts.googleapis.com/css2?family=Copse&family=Raleway:wght@200&family=Roboto&display=swap');
+body{
+  font-family: 'Copse', serif;
+}
 header {
   top: 0;
   left: 0;

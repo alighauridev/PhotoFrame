@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/actions/userActions";
@@ -19,14 +19,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { toast, ToastContainer } from "react-toastify";
 import Navigation from "../components/Navigation";
-const useStyles = makeStyles((theme) => ({
-    root: {
-        "& > *": {
-            margin: theme.spacing(1),
-            width: "25ch",
-        },
-    },
-}));
+
 function Copyright(props) {
     return (
         <Typography

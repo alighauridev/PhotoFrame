@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../scss/ProductDetail.scss'
 import Navigation from '../components/Navigation'
-import { AiOutlineUpload, AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineUpload, AiOutlineHeart, } from 'react-icons/ai'
+
 import { Pagination, Typography, Rating } from '@mui/material'
 import { product, productcopy } from '../assests/data'
 import '..//components/Footer'
@@ -11,6 +12,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../Redux/actions/productActions'
 import ImageDropZone from './ImageDropZone'
+import Productbanner from './Productbanner'
 const ProductDetail = () => {
     const [value, setValue] = useState();
     const { id } = useParams()
@@ -27,15 +29,34 @@ const ProductDetail = () => {
     return (
         <>
             <Navigation />
+            <Productbanner />
             <div className='product-detail-parent'>
                 {/* NAVUGATION START HERE */}
 
                 <div className='detail'>
 
-                    <div className='file-chose'>
+                    <div className='pic-frame'>
+                        <div className='file-chose'>
                         <img src={image} />
+                        </div>
+                        
+<button><AiOutlineUpload style={{color:'white'}}/> Upload Your Picture</button>
 
+<div className="detail-description">
+    <h3>Description</h3>
 
+    <p>This black, satin picture frame provides a timeless presentation of your art. With an extra deep rabbet for canvases up to 1 1/2", your art will be suspended and separated from the moulding for a true gallery look. Handcrafted from natural wood.
+        <br /><br />
+        Includes brackets and screws for attaching canvas to moulding, plus wire and heavy-duty D-rings for easy hanging.
+<br /><br />
+Measuring Tip: measure canvas at the corners for accurate sizing to account for any warping.
+    </p>
+
+    <li>Material: Wood</li>
+    <li>Width: 3/8" 
+</li>
+<li>Rabbet: 1 1/2"</li>
+</div>
                     </div>
 
                     <div className='product-detail-review'>
@@ -52,6 +73,13 @@ const ProductDetail = () => {
                                 <div className="start">Type</div>
                                 <div className="end">{type}</div>
                             </div>
+                            <div className='upload'>
+                                <select name="" id="">
+                                    <option value="">Add Picture</option>
+                                    <option value="">Upload Picture</option>
+                                    <option value="">Stock Art</option>
+                                </select>
+                            </div>
                             <div className="item">
                                 <div className="start">Color</div>
                                 <div className="end" style={{ display: 'flex' }}> <span
@@ -65,7 +93,7 @@ const ProductDetail = () => {
                                     }}
                                 ></span></div>
                             </div>
-                            <div className="item">
+                            <div className="item" style={{ paddingBottom: '20px' }}>
                                 <div className="start">Price</div>
                                 <div className="end">{price}</div>
                             </div>

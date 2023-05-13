@@ -15,13 +15,13 @@ import Home from "./Pages/Home";
 import ImageDropZone from "./components/ImageDropZone";
 import Product from "./components/Product";
 import ProductDetail from "./components/ProductDetail";
-import Frame from "./components/Frame";
+
 import LoginPage from "./Pages/LoginPage";
 import Register from "./Pages/Register";
 import InquiryForm from "./Pages/InquiryForm";
 import PrivateRouter from "./components/PrivateRouter";
 
-var Spinner = require("react-spinkit");
+
 function App() {
   let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#fff");

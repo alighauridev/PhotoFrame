@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import axios from "axios";
 // import ErrorMessage from "../component/ErrorMessage";
 // import Loading from "../component/Loading";
@@ -39,14 +39,7 @@ function Copyright(props) {
     );
 }
 const theme = createTheme();
-const useStyles = makeStyles((theme) => ({
-    root: {
-        "& > *": {
-            margin: theme.spacing(1),
-            width: "25ch",
-        },
-    },
-}));
+
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -60,7 +53,7 @@ const Register = () => {
     const dispatch = useDispatch();
     const UserRegister = useSelector((state) => state.UserRegister);
     const { loading, error, userInfo } = UserRegister;
-    const classes = useStyles();
+
     const validator = () => {
         if (!name) {
             toast.warning("Name is required");

@@ -91,6 +91,9 @@ const FrameImage = ({ mainImageUrl, rod }) => {
     return (
         mainImageUrl && (
             <>
+            <div>
+                heloo
+            </div>
                 {
                     rod.multiLayer ? <>
 

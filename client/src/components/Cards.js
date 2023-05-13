@@ -12,7 +12,7 @@ import { EffectCards } from "swiper";
 import "../scss/cards.scss";
 
 import { collection } from "../assests/data";
-import { IndeterminateCheckBoxTwoTone } from "@material-ui/icons";
+
 
 import { Pagination } from "swiper";
 import SwiperCore, { Autoplay } from "swiper";
