@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const frameImageSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserInfo",
+    },
     image: {
         type: String,
         required: true,

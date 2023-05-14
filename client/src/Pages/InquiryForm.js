@@ -9,15 +9,17 @@ function InquiryForm() {
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
     const frame = useSelector((state => state.ProductDetails.product._id))
+    const user = useSelector((state => state.UserLogin.userInfo._id))
     const navigate = useNavigate();
-    // const { id } = useParams()
+    const { id } = useParams()
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { data } = await axios.post('/api/contact', { name, email, message, frame });
-        console.log({ name, email, message, frame });
+        const { data } = await axios.post('/api/contact', { name, email, message, frame, user });
         alert(data.message);
-        navigate('/frames')
+        navigate('/frames');
+
     };
+    console.log(id);
 
     return (
         <div className="inquiry-form">

@@ -1,27 +1,29 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+
 const inquirySchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserInfo",
+    },
     name: {
         type: String,
-        required: true
+        required: true,
     },
-    email: {
-        type: String,
-        required: true
-    },
-    message: {
-        type: String,
-        required: true
-    },
+
     frame: {
-        type: String,
-        ref: 'FrameImage'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "FrameImage",
+    },
+    isSold: {
+        type: Boolean,
+        default: false,
     },
     created_at: {
         type: Date,
-        default: Date.now
-    }
+        default: Date.now,
+    },
 });
 
-const Inquiry = mongoose.model('Inquiry', inquirySchema);
+const Inquiry = mongoose.model("Inquiry", inquirySchema);
 
-export default Inquiry
+export default Inquiry;

@@ -40,44 +40,54 @@ const TableCell = styled.td`
 `;
 
 const AdminInquiries = () => {
-    const [inquiries, setInquiries] = useState([]);
+  const [inquiries, setInquiries] = useState([]);
 
-    useEffect(() => {
-        const fetchInquiries = async () => {
-            try {
-                const response = await axios.get("/api/contact/all");
-                setInquiries(response.data);
-            } catch (error) {
-                console.error("Error fetching inquiries", error);
-            }
-        };
+  useEffect(() => {
+    const fetchInquiries = async () => {
+      try {
+        const response = await axios.get("/api/contact/all");
+        setInquiries(response.data);
+      } catch (error) {
+        console.error("Error fetching inquiries", error);
+      }
+    };
 
-        fetchInquiries();
-    }, []);
+    fetchInquiries();
+  }, []);
 
-    return (
-        <Container>
-            <Title>Admin Inquiries</Title>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableHeading>Name</TableHeading>
-                        <TableHeading>Email</TableHeading>
-                        <TableHeading>Message</TableHeading>
-                    </TableRow>
-                </TableHead>
-                <tbody>
-                    {inquiries.map((inquiry) => (
-                        <TableRow key={inquiry._id}>
-                            <TableCell>{inquiry.name}</TableCell>
-                            <TableCell>{inquiry.email}</TableCell>
-                            <TableCell>{inquiry.message}</TableCell>
-                        </TableRow>
-                    ))}
-                </tbody>
-            </Table>
-        </Container>
-    );
+  return (
+    <Container>
+      <Title>Admin Inquiries</Title>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableHeading>Name</TableHeading>
+            <TableHeading>Email</TableHeading>
+            <TableHeading>Message</TableHeading>
+            <TableHeading>Frame</TableHeading>
+          </TableRow>
+        </TableHead>
+        <tbody>
+          {inquiries.map((inquiry) => (
+            <TableRow key={inquiry._id}>
+              <TableCell>{inquiry.name}</TableCell>
+              <TableCell>{inquiry.email}</TableCell>
+              <TableCell>{inquiry.message}</TableCell>
+              <TableCell style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div className="start">
+                  <h5>           {inquiry.frame.title}</h5>
+                  <p>           {inquiry.frame.description}</p>
+                </div>
+                <div className="end">
+                  <img src={inquiry.frame.image} height={'40px'} alt="" />
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
 };
 
 export default AdminInquiries;
