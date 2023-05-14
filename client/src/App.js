@@ -25,6 +25,7 @@ import Upload from "./components/Pannel/Upload";
 import Profile from "./components/Pannel/Profile";
 import Inquiry from './components/Pannel/Inquiry'
 import ArtWork from "./components/Pannel/ArtWork";
+import Navbar from "./components/Navbar";
 
 function App() {
   let [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ function App() {
       <main style={{ overflow: "hidden" }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/frame" element={<ImageDropZone />} /> */}
+        
           <Route path="/frames" element={<Product />} />
           <Route exact path="/search/:keyword" element={<Product />}></Route>
           <Route
@@ -61,8 +62,10 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Register />} />
         </Routes>
-        {/* <Frame /> */}
+        
       </main>
+      
+      
     </>
   );
 }
