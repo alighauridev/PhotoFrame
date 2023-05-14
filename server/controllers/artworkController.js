@@ -1,4 +1,4 @@
-import Artwork from "../models/artwork.js";
+import Artwork from "../modals/artworkModel.js";
 import Artist from "../modals/artistModel.js";
 
 // Upload artwork

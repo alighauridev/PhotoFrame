@@ -24,8 +24,6 @@ const ProductsGrid = ({ frames, pages, pageNumber }) => {
         }
     };
 
-
-
     return (
         <div className="product-image">
             {/* SORT SECTION START HERE */}
@@ -40,12 +38,11 @@ const ProductsGrid = ({ frames, pages, pageNumber }) => {
                 />
             </form>
 
-
             {/* PRODUCT IMAGES START HERE */}
 
             <div className="product-images-grid">
-                {
-                    frames?.length > 0 ? <>
+                {frames?.length > 0 ? (
+                    <>
                         {frames?.map((frame) => {
                             return (
                                 <div onClick={() => navigate(`/frames/${frame._id}`)}>
@@ -59,8 +56,12 @@ const ProductsGrid = ({ frames, pages, pageNumber }) => {
                                 </div>
                             );
                         })}
-                    </> : <h2 style={{ height: '45vh' }}><center>No Frame Available</center></h2>
-                }
+                    </>
+                ) : (
+                    <h2 style={{ height: "45vh" }}>
+                        <center>No Frame Available</center>
+                    </h2>
+                )}
             </div>
 
             <div className="sort-parent" style={{ margin: "40px 0" }}>

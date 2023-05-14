@@ -1,4 +1,5 @@
 import express from "express";
+
 import {
     approveArtwork,
     categorizeArtwork,
@@ -7,8 +8,7 @@ import {
     getAllApprovedArtworksForUser,
     getAllUnapprovedArtworks,
     updateArtwork,
-} from "../controllers/artworkController";
-
+} from "../controllers/artworkController.js";
 const router = express.Router();
 
 // Create artwork

@@ -24,7 +24,7 @@ const Product = () => {
     const products = useSelector((state) => state.Products);
     const { frames, loading, pages, page } = products;
     const { keyword } = useParams();
-    const [toggle, settoggle] = useState(false)
+    const [toggle, settoggle] = useState(false);
     const { pageNumber } = useParams();
     useEffect(() => {
         dispatch(getProducts({}));
@@ -36,7 +36,7 @@ const Product = () => {
     return (
         <>
             <Navigation />
-            <Productbanner/>
+            <Productbanner />
             <div className="product-parent">
                 {/* SECOND MAIN GRID SECTION START HERE */}
                 <button style={{

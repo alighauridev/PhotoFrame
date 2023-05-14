@@ -9,6 +9,7 @@ import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import frameRoutes from "./routes/frameRoutes.js";
 import inquiryRoutes from "./routes/InquiryRoutes.js";
+import artRoutes from "./routes/artRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 
 const app = express();
@@ -25,6 +26,7 @@ app.use("/api/import", ImportData);
 app.use("/api/frame", frameRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/contact", inquiryRoutes);
+app.use("/api/art", artRoutes);
 app.use("/api", categoryRoutes);
 app.use(notFound);
 app.use(errorHandler);
