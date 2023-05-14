@@ -1,0 +1,13 @@
+.empty-pannel{
+    display: grid;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    grid-template-columns: 1fr 8fr;
+    height: 100vh;
+    .welcome{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,100 @@
+.profile-parent {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+ height: 100vh;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+  
+  .profile-img {
+    display: flex;
+    justify-content: space-between;
+padding-top: 100px;
+    .img {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 50px;
+      .user-icon {
+        .icon {
+          font-size: 80px;
+          border-radius: 50px;
+          border: 2px solid gray;
+        }
+      }
+    }
+    h1 {
+      margin: 0;
+    }
+    .save-canel {
+      display: flex;
+      gap: 20px;
+align-items: center;
+      .cancel {
+        border: 1px solid gray !important;
+        background: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+      }
+      .save {
+        background: black;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border: none;
+      }
+    }
+  }
+  .user-name-parent{
+    width: 70%;
+    
+    margin: 50px 0 80px 0;
+    .user-name{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 80px;
+        margin: 20px 0;
+        align-items: center;
+      input{
+        border: none;
+        outline: none;
+        border: 1px solid rgba(128, 128, 128, 0.466);
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      select{
+        border: none;
+        outline: none;
+        border: 1px solid rgba(128, 128, 128, 0.466);
+        padding: 10px;
+        border-radius: 4px;
+      }
+      }
+  }
+ 
+    
+    .upload-photo{
+        display: flex;
+        justify-content: space-between;
+        .save-canel {
+            display: flex;
+            gap: 20px;
+      
+            .cancel {
+              border: 1px solid gray !important;
+              background: none;
+              padding: 10px 20px;
+              border-radius: 4px;
+            }
+            .save {
+                background: black;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 4px;
+                border: none;
+              }
+    }
+  
+}
+}

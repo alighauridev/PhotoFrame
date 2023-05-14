@@ -20,7 +20,11 @@ import LoginPage from "./Pages/LoginPage";
 import Register from "./Pages/Register";
 import InquiryForm from "./Pages/InquiryForm";
 import PrivateRouter from "./components/PrivateRouter";
-
+import Pannel from "./Pages/Pannel";
+import Upload from "./components/Pannel/Upload";
+import Profile from "./components/Pannel/Profile";
+import Inquiry from './components/Pannel/Inquiry'
+import ArtWork from "./components/Pannel/ArtWork";
 
 function App() {
   let [loading, setLoading] = useState(true);
@@ -49,6 +53,11 @@ function App() {
             <Route path="/frames/:id/inquiry" element={<InquiryForm />} />
 
           </Route>
+          <Route path="/pannel" element={<Pannel/>}/>
+          <Route path="/artwork" element={<ArtWork/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/upload" element={<Upload/>}/>
+          <Route path="/inquiry" element={<Inquiry/>}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<Register />} />
         </Routes>

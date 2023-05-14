@@ -14,6 +14,11 @@ export const nav = [
     path: "/#about",
     page: false,
   },
+  {
+    name:'Pannel',
+    path:'/pannel',
+    page:true
+  }
 
 
 

@@ -1,0 +1,25 @@
+.pannel-grid{
+    border-right:1px solid #dddd;
+    border-left:1px solid #dddd;
+    height: 100%;
+    
+    .side-bar{
+        padding: 20px 30px ;
+        height: 100%;
+        box-shadow: 0 0 0 0 black;
+    
+        .Pannel-title{
+            h1{
+                font-size: 32px;
+                font-weight: lighter;
+                border-bottom: 1px solid #dddd;
+            }
+           
+        }
+        h3{
+            font-size: 16px;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+    }
+}
