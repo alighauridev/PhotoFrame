@@ -4,11 +4,18 @@ import Artist from "../modals/artistModel.js";
 // Upload artwork
 export const createArtwork = async (req, res) => {
     try {
-        const { artist, image, title, description, price, type } = req.body;
+        const { artist, image, title, description, price, type, category } =
+            req.body;
 
         // Create new artwork document
         const newArtwork = new Artwork({
-            artist, image, title, description, price, type
+            artist,
+            image,
+            title,
+            description,
+            price,
+            type,
+            category,
         });
 
         // Save artwork document
@@ -27,7 +34,6 @@ export const createArtwork = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
-
 
 // Edit artwork
 export const updateArtwork = async (req, res) => {
@@ -73,10 +79,10 @@ export const deleteArtwork = async (req, res) => {
 };
 
 // Get all artwork
-const getAllArtwork = async (req, res) => {
+export const getAllArtworkByArtist = async (req, res) => {
     try {
         // Find all artwork documents
-        const artwork = await Artwork.find();
+        const artwork = await Artwork.find({ artist: req.params.id });
 
         res.status(200).json(artwork);
     } catch (error) {

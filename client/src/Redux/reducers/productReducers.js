@@ -48,8 +48,7 @@ export const frameFilterReducer = (state = {
         case FRAME_FILTERS_SUCCESS:
             return {
 
-                materials: action.payload.materials,
-                types: action.payload.types,
+                categories: action.payload.categories,
                 colors: action.payload.colors
             };
         case FRAME_FILTERS_FAIL:

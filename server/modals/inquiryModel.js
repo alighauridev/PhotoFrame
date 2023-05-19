@@ -5,6 +5,10 @@ const inquirySchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "UserInfo",
     },
+    artist: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserInfo",
+    },
     name: {
         type: String,
         required: true,
@@ -13,6 +17,10 @@ const inquirySchema = new mongoose.Schema({
     frame: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "FrameImage",
+    },
+    artwork: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "artwork",
     },
     isSold: {
         type: Boolean,

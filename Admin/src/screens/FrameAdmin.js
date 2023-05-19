@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Select from "react-select";
 
@@ -65,59 +65,40 @@ const styles = {
         fontSize: "16px",
     },
 };
-const options = [
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" },
-    { value: "option3", label: "Option 3" },
-];
 
-const customOption = (inputValue) => ({
-    value: inputValue,
-    label: `Add "${inputValue}"`,
-    isAddOption: true,
-});
 const FrameAdmin = () => {
     const dispatch = useDispatch();
     const UserLogin = useSelector((state) => state.UserLogin);
     const [Image, setImage] = useState("");
     const [layer, setLayer] = useState(false);
-    const [materialOptions, setMaterialOptions] = useState();
-    const [typeOptions, settypeOptions] = useState();
+
     const [toggle, setToggle] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [color, setColor] = useState("#000000");
-
+    const [category, setCategory] = useState("");
     const [edit, setEdit] = useState(false);
-    const [id, setId] = useState()
+    const [id, setId] = useState();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        type: "Classic",
-        material: "Wooden",
-        color: '#0000',
+
+        color: "#0000",
         price: null,
         image: null,
         multiLayer: false,
     });
     const [frames, setframes] = useState([]);
-    const [selectedOption, setSelectedOption] = useState(null);
     const { userInfo } = UserLogin;
+    const [mainCategories, setMainCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState([]);
+    const [selectedMainCategory, setSelectedMainCategory] = useState(null);
 
-    const handleInputChangeSelect = (inputValue, { action }) => {
-        if (action === "input-change" && inputValue) {
-            setSelectedOption(customOption(inputValue));
-        } else if (selectedOption?.isAddOption) {
-            setSelectedOption(null);
-        }
-    };
-
-    const handleOptionSelect = (option) => {
-        if (option?.isAddOption) {
-
-        } else {
-            setSelectedOption(option);
-        }
-    };
+    useEffect(() => {
+        fetch("/api/categories/frame")
+            .then((response) => response.json())
+            .then((data) => setMainCategories(data[0].subcategories))
+            .catch((error) => console.error(error));
+    }, []);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -129,44 +110,48 @@ const FrameAdmin = () => {
         event.preventDefault();
         if (!edit) {
             try {
-                await axios.post("/api/frame/create", { ...formData, multiLayer: layer });
-                setToggle(!toggle)
+                await axios.post("/api/frame/admin/create", {
+                    ...formData,
+                    multiLayer: layer,
+                    category,
+                    user: userInfo._id,
+                });
+                setToggle(!toggle);
 
                 alert("Frame uploaded successfully!");
                 setFormData({
                     title: "",
                     description: "",
-                    type: "Classic",
-                    material: "Wooden",
+
                     image: null,
                     color: null,
                     price: null,
                     multiLayer: false,
                 });
-
             } catch (error) {
                 console.error("Error uploading frame:", error);
                 alert("Error uploading frame.");
             }
-
-        }
-        else {
+        } else {
             try {
-                await axios.put(`/api/frame/${id}`, { ...formData, multiLayer: layer });
-                setToggle(!toggle)
+                await axios.put(`/api/frame/${id}`, {
+                    ...formData,
+                    multiLayer: layer,
+                    category,
+                });
+                setToggle(!toggle);
 
                 alert("Frame Edit successfully!");
                 setFormData({
                     title: "",
                     description: "",
-                    type: "Classic",
-                    material: "Wooden",
+
                     color: null,
                     image: null,
                     price: null,
                     multiLayer: false,
                 });
-                setEdit(false)
+                setEdit(false);
             } catch (error) {
                 console.error("Error uploading frame:", error);
                 alert("Error uploading frame.");
@@ -189,7 +174,6 @@ const FrameAdmin = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-
                     setImage(data.url.toString());
                     setFormData((prevState) => ({
                         ...prevState,
@@ -209,30 +193,26 @@ const FrameAdmin = () => {
     };
     const getFrames = async () => {
         try {
-            const { data } = await axios.get("/api/frame/all");
-            const { data: dataTwo } = await axios.get("/api/frame/filters");
-            setMaterialOptions(dataTwo.materials)
-            settypeOptions(dataTwo.types)
-            console.log(typeOptions, materialOptions, dataTwo);
-            setframes(data);
+            const { data } = await axios.get(`/api/frame/all/${userInfo._id}`);
+
+            setframes(data.frames);
         } catch (error) {
             console.error("Error uploading frame:", error);
         }
     };
     const deleteFrame = async (id) => {
-        setEdit(false)
+        setEdit(false);
         try {
             const { data } = await axios.delete(`/api/frame/${id}`);
-            setToggle(!toggle)
-
+            setToggle(!toggle);
         } catch (error) {
             console.error("Error uploading frame:", error);
         }
     };
     const editFrame = async (id) => {
-        window.scroll(0, 0)
-        setId(id)
-        setEdit(true)
+        window.scroll(0, 0);
+        setId(id);
+        setEdit(true);
         try {
             const { data } = await axios.get(`/api/frame/${id}`);
             setFormData({
@@ -244,7 +224,6 @@ const FrameAdmin = () => {
                 price: data.price,
                 multiLayer: data.multiLayer,
             });
-
         } catch (error) {
             console.error("Error uploading frame:", error);
         }
@@ -259,9 +238,10 @@ const FrameAdmin = () => {
     useEffect(() => {
         getFrames();
     }, [toggle]);
+
     return (
         <div>
-            <Link to={'/inquires'}>Check Inquiries</Link>
+            <Link to={"/inquires"}>Check Inquiries</Link>
             <div className="admin__panel">
                 <h1>Admin Pannel</h1>
                 <div className="upload__frame">
@@ -293,9 +273,6 @@ const FrameAdmin = () => {
                                 style={styles.textarea}
                             />
                         </div>
-
-
-
                         <div style={styles.formGroup}>
                             <label htmlFor="type" style={styles.label}>
                                 Price
@@ -309,47 +286,22 @@ const FrameAdmin = () => {
                                 required
                                 style={styles.input}
                             />
-
-                        </div>
-                        <div style={styles.formGroup}>
-                            <label htmlFor="type" style={styles.label}>
-                                Type
-                            </label>
-                            <input
-                                type="text"
-                                name="type"
-                                id="type"
-                                value={formData.type}
-                                onChange={handleInputChange}
-                                required
-                                style={styles.input}
-                            />
-
-                        </div>
-                        <div style={styles.formGroup}>
-                            <label htmlFor="material" style={styles.label}>
-                                Material
-                            </label>
-                            <input
-                                type="text"
-                                name="material"
-                                id="material"
-                                value={formData.material}
-                                onChange={handleInputChange}
-                                required
-                                style={styles.input}
-                            />
-
                         </div>
                         <div style={styles.formGroup}>
                             <label htmlFor="color" style={styles.label}>
                                 Color
                             </label>
-                            <div style={{ display: 'grid' }}>
+                            <div style={{ display: "grid" }}>
                                 {/* <ChromePicker color={color} onChange={(e) => setColor(e.hex)} /> */}
-                                {Image && <img src={Image} style={{
-                                    width: '40px',
-                                }} alt="" />}
+                                {Image && (
+                                    <img
+                                        src={Image}
+                                        style={{
+                                            width: "40px",
+                                        }}
+                                        alt=""
+                                    />
+                                )}
                             </div>
                             <input
                                 type="text"
@@ -360,6 +312,19 @@ const FrameAdmin = () => {
                                 required
                                 style={styles.input}
                             />
+                        </div>
+                        <div style={styles.formGroup}>
+                            <select
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
+                                <option value="">Select a main category</option>
+                                {mainCategories?.map((category) => (
+                                    <option key={category._id} value={category._id}>
+                                        {category.name}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         <div style={styles.formGroup}>
@@ -401,16 +366,6 @@ const FrameAdmin = () => {
                             />
                         </div>{" "}
                         {uploading && <p>Uploading image...</p>}
-                        {/* <div className="mb-4" style={styles.formGroup}>
-              <label className="form-label"> Corner </label>{" "}
-
-              <input
-                className="form-control mt-3"
-                type="file"
-                name="corner"
-                onChange={(e) => postDetails(e, e.target.files[0])}
-              />
-            </div>{" "} */}
                         <button type="submit" style={styles.submitButton}>
                             {edit ? "Edit Frame" : "  Upload Frame"}
                         </button>
@@ -435,7 +390,7 @@ const FrameAdmin = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default FrameAdmin
+export default FrameAdmin;

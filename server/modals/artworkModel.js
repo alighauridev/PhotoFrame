@@ -23,10 +23,11 @@ const artworkSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  type: {
-    type: String,
-    default: "Classic",
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
   },
+
   isAvailable: {
     type: Boolean,
     default: true,

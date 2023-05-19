@@ -73,13 +73,15 @@ const AdminInquiries = () => {
               <TableCell>{inquiry.name}</TableCell>
               <TableCell>{inquiry.email}</TableCell>
               <TableCell>{inquiry.message}</TableCell>
-              <TableCell style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <TableCell
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
                 <div className="start">
-                  <h5>           {inquiry.frame.title}</h5>
-                  <p>           {inquiry.frame.description}</p>
+                  <h5> {inquiry.frame?.title}</h5>
+                  <p> {inquiry.frame?.description}</p>
                 </div>
                 <div className="end">
-                  <img src={inquiry.frame.image} height={'40px'} alt="" />
+                  <img src={inquiry.frame?.image} height={"40px"} alt="" />
                 </div>
               </TableCell>
             </TableRow>

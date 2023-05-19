@@ -1,12 +1,9 @@
 import express from "express";
-import Products from "./assets/data.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDb from "./config/db.js";
-import ImportData from "./importData.js";
 import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
-import orderRoutes from "./routes/orderRoutes.js";
 import frameRoutes from "./routes/frameRoutes.js";
 import inquiryRoutes from "./routes/InquiryRoutes.js";
 import artRoutes from "./routes/artRoutes.js";
@@ -22,12 +19,10 @@ console.log(process.env.PORT);
 
 
 app.use("/api/users", userRoutes);
-app.use("/api/import", ImportData);
 app.use("/api/frame", frameRoutes);
-app.use("/api/orders", orderRoutes);
 app.use("/api/contact", inquiryRoutes);
 app.use("/api/art", artRoutes);
-app.use("/api", categoryRoutes);
+app.use("/api/categories", categoryRoutes);
 app.use(notFound);
 app.use(errorHandler);
 app.get("/", (req, res) => {

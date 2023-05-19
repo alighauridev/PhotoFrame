@@ -11,8 +11,7 @@ const SideBarFilters = ({ toggle, settoggle }) => {
     const [colors, setColors] = useState([]);
     const productFilter = useSelector((state) => state.Filters);
     const {
-        materials: materialState,
-        types: typeState,
+        categories,
         colors: colorsState,
     } = productFilter;
 
@@ -79,35 +78,28 @@ const SideBarFilters = ({ toggle, settoggle }) => {
                     ))}
                 </div>
             </div> */}
-            <div className="frame-material">
-                <h4>Frame Material </h4>
-
-                <div className="frame-material-div">
-                    {materialState?.map((material) => (
-                        <div className="frame-material-div" key={material}>
-                            <input
-                                type="checkbox"
-                                onChange={() => handleMaterialChange(material)}
-                            />
-                            <h3>{material}</h3>
+            {
+                categories &&
+                categories.map((category) => (
+                    <div className="frame-material" key={category._id}>
+                        <h4>{category.name} </h4>
+                        <div className="frame-material-div">
+                            {category.subcategories?.map((sub) => (
+                                <div className="frame-material-div" key={sub._id}>
+                                    <input
+                                        type="checkbox"
+                                        onChange={() => handleMaterialChange(sub._id)}
+                                    />
+                                    <h3>{sub.name}</h3>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-            </div>
+                    </div>
+                ))
+            }
 
-            {/* FRAME TYPE SECTION START HERE */}
-            <div className="frame-material">
-                <h4>Frame Type</h4>
 
-                <div className="frame-material-div">
-                    {typeState?.map((type) => (
-                        <div className="frame-material-div" key={type}>
-                            <input type="checkbox" onChange={() => handleTypeChange(type)} />
-                            <h3>{type}</h3>
-                        </div>
-                    ))}
-                </div>
-            </div>
+
             <div className="btn__grid">
                 <button onClick={handleFilterClick}>Filter</button>
                 <button>Clear</button>

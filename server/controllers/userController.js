@@ -21,7 +21,6 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin,
             token: generateToken(user._id),
         });
     } else {
@@ -52,7 +51,6 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
-        // user.picture = req.body.picture || user.picture;
         if (req.body.password) {
             user.password = req.body.password;
         }
@@ -63,8 +61,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             _id: updatedUser._id,
             name: updatedUser.name,
             email: updatedUser.email,
-            // picture: updatedUser.picture,
-            isAdmin: updatedUser.isAdmin,
+
             token: generateToken(updatedUser._id),
             createdAt: updatedUser.createdAt,
         });
@@ -78,5 +75,10 @@ const allUsers = asyncHandler(async (req, res) => {
 
     res.json(users);
 });
+// GET all artists Admin
+const allArtists = asyncHandler(async (req, res) => {
+    const artists = await User.find({ isArtist: true });
+    res.json(artists);
+});
 
-export { registerUser, authUser, updateUserProfile, allUsers };
+export { registerUser, authUser, updateUserProfile, allUsers, allArtists };

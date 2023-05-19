@@ -5,6 +5,7 @@ const frameImageSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "UserInfo",
     },
+
     image: {
         type: String,
         required: true,
@@ -26,17 +27,18 @@ const frameImageSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    type: {
-        type: String,
-        default: 'Classic'
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
     },
-    material: {
-        type: String,
-        default: 'Wooden'
-    },
+
     multiLayer: {
         type: Boolean,
-        default: false
+        default: false,
+    },
+    approved: {
+        type: Boolean,
+        default: false,
     },
     createdAt: {
         type: Date,

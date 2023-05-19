@@ -10,18 +10,7 @@ export const getCategories = async (req, res) => {
         res.status(500).send(error);
     }
 };
-// get single category
-export const getCategory = async (req, res) => {
-    try {
-        const category = await Category.findById(req.params.id);
-        if (!category) {
-            return res.status(404).json({ error: "Category Not Found" });
-        }
-        res.send(category);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-};
+
 // create a category
 export const createCategory = async (req, res) => {
     try {
@@ -101,73 +90,46 @@ export const deleteCategory = async (req, res) => {
         res.status(500).send(error);
     }
 };
+// Get Main categories Controller
 
-// Get Subcategories Controller
-export const getSubcategory = async (req, res) => {
+
+
+// Get ArtWork Categories Controller
+
+export const getArtworkCategories = async (req, res) => {
     try {
-        const category = await Category.findById(req.params.id);
+        const category = await Category.find({
+            name: "Art Work Custom"
+        }).populate('subcategories');
         if (!category) {
-            return res.status(404).send();
+            return res.status(404).json({ message: 'Category not found' });
         }
-        const subcategories = await Category.find({ parentCategory: category._id });
-        res.send(subcategories);
+        return res.json(category);
     } catch (error) {
-        res.status(500).send(error);
+        return res.status(500).json({ message: error.message });
     }
 };
 
-// create a subcategory
-export const createSubcategory = async (req, res) => {
+// Get Frames Categories Controller
+
+export const getFrameCategories = async (req, res) => {
     try {
-        const { parentId, name, slug } = req.body;
-
-        if (!parentId || !name || !slug) {
-            return res.status(400).json({
-                error: "Parent category ID, subcategory name, and slug are required.",
-            });
+        const category = await Category.find({
+            name: "Custom Frame Categories"
+        }).populate('subcategories');
+        if (!category) {
+            return res.status(404).json({ message: 'Category not found' });
         }
-
-        const parentCategory = await Category.findById(parentId);
-        if (!parentCategory) {
-            return res.status(404).json({ error: "Parent category not found." });
-        }
-
-        const newSubcategory = new Category({
-            name,
-            slug,
-            parentCategory: parentId,
-        });
-        const savedSubcategory = await newSubcategory.save();
-
-        parentCategory.subcategories.push(savedSubcategory._id);
-        await parentCategory.save();
-
-        res.status(201).json(savedSubcategory);
-    } catch (err) {
-        res.status(500).json({ error: "Internal server error" });
-    }
-};
-// delete a subcategory
-export const deleteSubcategory = async (req, res) => {
-    try {
-        const parentCategory = await Category.findById(req.params.parentId);
-        if (!parentCategory) {
-            return res.status(404).send();
-        }
-        const subcategoryId = req.params.subcategoryId;
-        const subcategoryIndex =
-            parentCategory.subcategories.indexOf(subcategoryId);
-        if (subcategoryIndex === -1) {
-            return res.status(404).send();
-        }
-        parentCategory.subcategories.splice(subcategoryIndex, 1);
-        await Category.findByIdAndDelete(subcategoryId);
-        await parentCategory.save();
-        res.send(parentCategory);
+        return res.json(category);
     } catch (error) {
-        res.status(500).send(error);
+        return res.status(500).json({ message: error.message });
     }
 };
+
+
+
+
+
 export const getCategoriesWithSubcategories = async (req, res) => {
     try {
         const topLevelCategories = await Category.find({

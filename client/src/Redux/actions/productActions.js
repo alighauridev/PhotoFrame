@@ -25,7 +25,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const getProducts =
-    ({ keyword = '', pageNumber = '', type = '', material = '', color = '' }) =>
+    ({ keyword = "", pageNumber = "", type = "", material = "", color = "" }) =>
         async (dispatch) => {
             try {
                 dispatch({
@@ -51,34 +51,30 @@ export const getProducts =
             }
         };
 
+export const getFilters = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: FRAME_FILTERS_REQUEST,
+        });
 
-export const getFilters =
-    () =>
-        async (dispatch) => {
-            try {
-                dispatch({
-                    type: FRAME_FILTERS_REQUEST,
-                });
+        const url = `/api/frame/filters`;
 
-                const url = `/api/frame/filters`;
+        const { data } = await axios.get(url);
 
-                const { data } = await axios.get(url);
-
-                dispatch({
-                    type: FRAME_FILTERS_SUCCESS,
-                    payload: data,
-                });
-            } catch (error) {
-                dispatch({
-                    type: FRAME_FILTERS_FAIL,
-                    payload:
-                        error.response && error.response.data.message
-                            ? error.response.data.message
-                            : error.message,
-                });
-            }
-        };
-
+        dispatch({
+            type: FRAME_FILTERS_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: FRAME_FILTERS_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
 
 // export const getProducts =
 //     (keyword = "", pageNumber = "") =>

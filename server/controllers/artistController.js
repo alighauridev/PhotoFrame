@@ -1,8 +1,9 @@
 import Category from "../modals/categoryModel.js";
 import Artist from "../modals/artistModel.js";
 import User from "../modals/userModal.js";
+import { admin } from "../middlewares/authMiddleware.js";
 // Create API route to get all artists
-app.get("/artists", async (req, res) => {
+app.get("/artists", admin, async (req, res) => {
     try {
         const artists = await Artist.find().populate("User");
         res.json(artists);

@@ -1,19 +1,44 @@
 import express from "express";
-import expressAsyncHandler from "express-async-handler";
+import asyncHandler from "express-async-handler";
 import Inquiry from "../modals/inquiryModel.js";
 import FrameImage from "../modals/frameModel.js";
 
 const inquiryRoutes = express.Router();
+
+// GET User Inquiries
 inquiryRoutes.get(
-    "/",
-    expressAsyncHandler(async (req, res) => {
-        const { name, email, message, frame } = req.body;
+    "/user/:userId",
+    asyncHandler(async (req, res) => {
+        const inquiries = await Inquiry.find({ user: req.params.userId }).populate(
+            "frame artwork"
+        );
+        res.json(inquiries);
+    })
+);
+
+// GET Artist Inquiries
+inquiryRoutes.get(
+    "/artist/:artistId",
+    asyncHandler(async (req, res) => {
+        const inquiries = await Inquiry.find({
+            artist: req.params.artistId,
+        }).populate("frame artwork");
+        res.json(inquiries);
+    })
+);
+
+inquiryRoutes.post(
+    "/frame",
+    asyncHandler(async (req, res) => {
+        const { name, email, message, frame, user } = req.body;
 
         const inquiry = new Inquiry({
             name,
             email,
             message,
             frame,
+            user,
+            artist,
         });
 
         inquiry
@@ -28,16 +53,17 @@ inquiryRoutes.get(
     })
 );
 inquiryRoutes.post(
-    "/",
-    expressAsyncHandler(async (req, res) => {
-        const { name, email, message, frame, user } = req.body;
+    "/artwork",
+    asyncHandler(async (req, res) => {
+        const { name, email, message, artwork, user } = req.body;
 
         const inquiry = new Inquiry({
             name,
             email,
             message,
-            frame,
+            artwork,
             user,
+            artist,
         });
 
         inquiry
@@ -49,41 +75,6 @@ inquiryRoutes.post(
                 console.log(error);
                 res.status(500).json({ error: "Internal server error" });
             });
-    })
-);
-inquiryRoutes.get(
-    "/all",
-    expressAsyncHandler(async (req, res) => {
-        try {
-            const inquiries = await Inquiry.find({}).populate("frame user");
-            res.json(inquiries);
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ error: "Internal server error" });
-        }
-    })
-);
-inquiryRoutes.get(
-    "/frameImage/:id/inquiries",
-    expressAsyncHandler(async (req, res) => {
-        try {
-            const { userId } = req.params;
-
-            // Find all the FrameImages created by the user
-            const frameImages = await FrameImage.find({ user: userId });
-
-            // Find all the inquiries related to the user's FrameImages
-            const inquiries = await Inquiry.find({
-                frame: { $in: frameImages.map((f) => f._id) },
-            })
-                .populate("user")
-                .populate("frame");
-
-            res.status(200).json(inquiries);
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: "Server error" });
-        }
     })
 );
 
