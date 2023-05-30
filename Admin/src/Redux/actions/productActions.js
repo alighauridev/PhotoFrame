@@ -18,7 +18,7 @@ import {
     PRODUCT_UPDATE_REQUEST,
     PRODUCT_UPDATE_SUCCESS,
 } from "../constants/productConstants";
-import axios from "axios";
+import axios from "../../api/axiosa";
 import { toast } from "react-toastify";
 export const getAllProducts = () => async (dispatch, getState) => {
     try {

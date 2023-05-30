@@ -1,4 +1,10 @@
 import {
+    ARTWORK_FILTERS_FAIL,
+    ARTWORK_FILTERS_REQUEST,
+    ARTWORK_FILTERS_SUCCESS,
+    ARTWORK_LIST_FAIL,
+    ARTWORK_LIST_REQUEST,
+    ARTWORK_LIST_SUCCESS,
     FRAME_FILTERS_FAIL,
     FRAME_FILTERS_REQUEST,
     FRAME_FILTERS_SUCCESS,
@@ -20,19 +26,22 @@ import {
     PRODUCT_UPDATE_FAIL,
     PRODUCT_UPDATE_REQUEST,
     PRODUCT_UPDATE_SUCCESS,
+    ARTWORK_DETAILS_FAIL,
+    ARTWORK_DETAILS_SUCCESS,
+    ARTWORK_DETAILS_REQUEST
 } from "../constants/productConstants";
-import axios from "axios";
+import axios from "../../api/axios";
 import { toast } from "react-toastify";
 
 export const getProducts =
-    ({ keyword = "", pageNumber = "", type = "", material = "", color = "" }) =>
+    ({ keyword = "", pageNumber = "", material = "" }) =>
         async (dispatch) => {
             try {
                 dispatch({
                     type: PRODUCT_LIST_REQUEST,
                 });
 
-                const url = `/api/frame?keyword=${keyword}&pageNumber=${pageNumber}&type=${type}&material=${material}&color=${color}`;
+                const url = `/api/frame?keyword=${keyword}&pageNumber=${pageNumber}&category=${material}`;
 
                 const { data } = await axios.get(url);
 
@@ -50,6 +59,32 @@ export const getProducts =
                 });
             }
         };
+export const getArtworks =
+    ({ keyword = "", pageNumber = "", material = "" }) =>
+        async (dispatch) => {
+            try {
+                dispatch({
+                    type: ARTWORK_LIST_REQUEST,
+                });
+
+                const url = `/api/artwork?keyword=${keyword}&pageNumber=${pageNumber}&category=${material}`;
+
+                const { data } = await axios.get(url);
+
+                dispatch({
+                    type: ARTWORK_LIST_SUCCESS,
+                    payload: data,
+                });
+            } catch (error) {
+                dispatch({
+                    type: ARTWORK_LIST_FAIL,
+                    payload:
+                        error.response && error.response.data.message
+                            ? error.response.data.message
+                            : error.message,
+                });
+            }
+        };
 
 export const getFilters = () => async (dispatch) => {
     try {
@@ -57,7 +92,7 @@ export const getFilters = () => async (dispatch) => {
             type: FRAME_FILTERS_REQUEST,
         });
 
-        const url = `/api/frame/filters`;
+        const url = `/api/categories/frame`;
 
         const { data } = await axios.get(url);
 
@@ -68,6 +103,30 @@ export const getFilters = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: FRAME_FILTERS_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
+export const getArtworkFilters = () => async (dispatch) => {
+    try {
+        dispatch({
+            type: ARTWORK_FILTERS_REQUEST,
+        });
+
+        const url = `/api/categories/art`;
+
+        const { data } = await axios.get(url);
+
+        dispatch({
+            type: ARTWORK_FILTERS_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: ARTWORK_FILTERS_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message
@@ -116,6 +175,53 @@ export const getSingleProduct = (id) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
+// export const getProducts =
+//     (keyword = "", pageNumber = "") =>
+//         async (dispatch, getState) => {
+//             try {
+//                 dispatch({
+//                     type: PRODUCT_LIST_REQUEST,
+//                 });
+
+//                 const { data } = await axios.get(
+//                     `/api/frame?keyword=${keyword}&pageNumber=${pageNumber}`
+//                 );
+
+//                 dispatch({
+//                     type: PRODUCT_LIST_SUCCESS,
+//                     payload: data,
+//                 });
+//             } catch (error) {
+//                 dispatch({
+//                     type: PRODUCT_LIST_FAIL,
+//                     payload:
+//                         error.response && error.response.data.message
+//                             ? error.response.data.message
+//                             : error.message,
+//                 });
+//             }
+//         };
+
+export const getSingleArtwork = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: ARTWORK_DETAILS_REQUEST,
+        });
+        const { data } = await axios.get(`/api/artwork/${id}`);
+        dispatch({
+            type: ARTWORK_DETAILS_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: ARTWORK_DETAILS_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message

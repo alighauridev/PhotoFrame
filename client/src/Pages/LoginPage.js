@@ -43,9 +43,8 @@ const LoginPage = ({ history }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const userLogin = useSelector((state) => state.userLogin);
-    const user = useSelector((state) => state.userInfo);
-    const { loading = false, userInfo } = userLogin || {};
+    const user = useSelector((state) => state.UserLogin);
+    const { loading = false, userInfo } = user || {};
     const navigate = useNavigate();
 
     const validator = () => {
@@ -67,7 +66,7 @@ const LoginPage = ({ history }) => {
         }
     };
     useEffect(() => {
-        if (user?.token) {
+        if (userInfo?.token) {
             navigate("/");
         } else {
             toast.error(userInfo);

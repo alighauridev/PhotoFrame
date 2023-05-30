@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -52,16 +52,18 @@ export const login = (email, password) => async (dispatch) => {
 export const register = (name, email, password) => async (dispatch) => {
     try {
         dispatch({ type: USER_REGISTER_REQUEST });
-
-        const rawResponse = await fetch("/api/users/register", {
-            method: "POST",
+        const config = {
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ name, email, password }),
-        });
-        const data = await rawResponse.json();
+        };
+        const { data } = await axios.post(
+            "/api/users/register",
+            { name, email, password },
+            config
+        );
+
 
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
         dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
@@ -119,8 +121,7 @@ export const logout = () => async (dispatch) => {
     // const navigate = useNavigate();
     localStorage.removeItem("userInfo");
     dispatch({ type: USER_LOGOUT });
-    dispatch({ type: ORDER_DETAILS_RESET });
-    dispatch({ type: ALL_ORDERS_RESET });
+
 
     document.location.href = "/login";
 };

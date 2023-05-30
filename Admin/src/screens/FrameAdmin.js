@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+    BrowserRouter,
+    Link,
+    Route,
+    Routes,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import Select from "react-select";
 
-import axios from "axios";
+import axios from "../api/axiosa";
 import { useDropzone } from "react-dropzone";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch, useSelector } from "react-redux";
+import Navigation from "../pages/Navigation";
 
 const styles = {
     formContainer: {
@@ -75,18 +83,18 @@ const FrameAdmin = () => {
     const [toggle, setToggle] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [color, setColor] = useState("#000000");
+    const [loading, setLoading] = useState(false);
     const [category, setCategory] = useState("");
     const [edit, setEdit] = useState(false);
-    const [id, setId] = useState();
+    const { id } = useParams();
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-
-        color: "#0000",
         price: null,
         image: null,
         multiLayer: false,
     });
+    const navigate = useNavigate();
     const [frames, setframes] = useState([]);
     const { userInfo } = UserLogin;
     const [mainCategories, setMainCategories] = useState([]);
@@ -94,10 +102,13 @@ const FrameAdmin = () => {
     const [selectedMainCategory, setSelectedMainCategory] = useState(null);
 
     useEffect(() => {
-        fetch("/api/categories/frame")
-            .then((response) => response.json())
-            .then((data) => setMainCategories(data[0].subcategories))
-            .catch((error) => console.error(error));
+        axios.get('/api/categories/frame')
+            .then(response => {
+                setMainCategories(response.data[0].subcategories);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }, []);
 
     const handleInputChange = (event) => {
@@ -122,19 +133,18 @@ const FrameAdmin = () => {
                 setFormData({
                     title: "",
                     description: "",
-
                     image: null,
-                    color: null,
                     price: null,
                     multiLayer: false,
                 });
+                navigate("/frames");
             } catch (error) {
                 console.error("Error uploading frame:", error);
                 alert("Error uploading frame.");
             }
         } else {
             try {
-                await axios.put(`/api/frame/${id}`, {
+                await axios.put(`/api/frame/user/${id}`, {
                     ...formData,
                     multiLayer: layer,
                     category,
@@ -142,19 +152,19 @@ const FrameAdmin = () => {
                 setToggle(!toggle);
 
                 alert("Frame Edit successfully!");
+                navigate("/frames");
                 setFormData({
                     title: "",
                     description: "",
 
-                    color: null,
                     image: null,
                     price: null,
                     multiLayer: false,
                 });
                 setEdit(false);
             } catch (error) {
-                console.error("Error uploading frame:", error);
-                alert("Error uploading frame.");
+                console.error("Error Updating frame:", error);
+                alert("Error Updating frame.");
             }
         }
     };
@@ -191,203 +201,161 @@ const FrameAdmin = () => {
             // return setPicMessage("Please Select an Image");
         }
     };
-    const getFrames = async () => {
-        try {
-            const { data } = await axios.get(`/api/frame/all/${userInfo._id}`);
 
-            setframes(data.frames);
-        } catch (error) {
-            console.error("Error uploading frame:", error);
-        }
-    };
-    const deleteFrame = async (id) => {
-        setEdit(false);
-        try {
-            const { data } = await axios.delete(`/api/frame/${id}`);
-            setToggle(!toggle);
-        } catch (error) {
-            console.error("Error uploading frame:", error);
-        }
-    };
     const editFrame = async (id) => {
         window.scroll(0, 0);
-        setId(id);
+
         setEdit(true);
         try {
+            setLoading(true);
             const { data } = await axios.get(`/api/frame/${id}`);
             setFormData({
                 title: data.title,
                 description: data.description,
-                type: data.type,
-                material: data.material,
                 image: data.image,
                 price: data.price,
-                multiLayer: data.multiLayer,
             });
+            setCategory(data.category._id);
+            setLayer(data.multiLayer);
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.error("Error uploading frame:", error);
         }
     };
-    const handleInputColorChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
-        if (name === "color") {
-            setColor(value);
-        }
-    };
+
     useEffect(() => {
-        getFrames();
-    }, [toggle]);
+        window.scroll(0, 0);
+        if (id) {
+            setEdit(true);
+            editFrame(id);
+        }
+    }, [id]);
 
     return (
         <div>
-            <Link to={"/inquires"}>Check Inquiries</Link>
+            <Navigation />
+            <Link to={"/frame-inquiries"}>Check Frame Inquiries</Link>
             <div className="admin__panel">
-                <h1>Admin Pannel</h1>
-                <div className="upload__frame">
-                    <form onSubmit={handleSubmit} style={styles.formContainer}>
-                        <div style={styles.formGroup}>
-                            <label htmlFor="title" style={styles.label}>
-                                Title
-                            </label>
-                            <input
-                                type="text"
-                                name="title"
-                                id="title"
-                                value={formData.title}
-                                onChange={handleInputChange}
-                                required
-                                style={styles.input}
-                            />
-                        </div>
-                        <div style={styles.formGroup}>
-                            <label htmlFor="description" style={styles.label}>
-                                Description
-                            </label>
-                            <textarea
-                                name="description"
-                                id="description"
-                                value={formData.description}
-                                onChange={handleInputChange}
-                                required
-                                style={styles.textarea}
-                            />
-                        </div>
-                        <div style={styles.formGroup}>
-                            <label htmlFor="type" style={styles.label}>
-                                Price
-                            </label>
-                            <input
-                                type="number"
-                                name="price"
-                                id="price"
-                                value={formData.price}
-                                onChange={handleInputChange}
-                                required
-                                style={styles.input}
-                            />
-                        </div>
-                        <div style={styles.formGroup}>
-                            <label htmlFor="color" style={styles.label}>
-                                Color
-                            </label>
-                            <div style={{ display: "grid" }}>
-                                {/* <ChromePicker color={color} onChange={(e) => setColor(e.hex)} /> */}
-                                {Image && (
-                                    <img
-                                        src={Image}
-                                        style={{
-                                            width: "40px",
-                                        }}
-                                        alt=""
+                <h1>{id ? "Edit Frame" : "Upload Frame"}</h1>
+                {loading ? (
+                    <p>loading.....</p>
+                ) : (
+                    <div className="upload__frame">
+                        <form onSubmit={handleSubmit} style={styles.formContainer}>
+                            <div style={styles.formGroup}>
+                                <label htmlFor="title" style={styles.label}>
+                                    Title
+                                </label>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                    value={formData.title}
+                                    onChange={handleInputChange}
+                                    required
+                                    style={styles.input}
+                                />
+                            </div>
+                            <div style={styles.formGroup}>
+                                <label htmlFor="description" style={styles.label}>
+                                    Description
+                                </label>
+                                <textarea
+                                    name="description"
+                                    id="description"
+                                    value={formData.description}
+                                    onChange={handleInputChange}
+                                    required
+                                    style={styles.textarea}
+                                />
+                            </div>
+                            <div style={styles.formGroup}>
+                                <label htmlFor="type" style={styles.label}>
+                                    Price
+                                </label>
+                                <input
+                                    type="number"
+                                    name="price"
+                                    id="price"
+                                    value={formData.price}
+                                    onChange={handleInputChange}
+                                    required
+                                    style={styles.input}
+                                />
+                            </div>
+                            <div style={styles.formGroup}>
+                                <label htmlFor="type" style={styles.label}>
+                                    Category
+                                </label>
+                                <select
+                                    value={category}
+                                    onChange={(e) => setCategory(e.target.value)}
+                                >
+                                    <option value="">Select a main category</option>
+                                    {mainCategories?.map((category) => (
+                                        <option key={category._id} value={category._id}>
+                                            {category.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div style={styles.formGroup}>
+                                <label htmlFor="multilayer" style={styles.label}>
+                                    Multilayers
+                                </label>
+                                <div>
+                                    <input
+                                        type="radio"
+                                        id="enableMultilayers"
+                                        name="multilayer"
+                                        value="true"
+                                        style={styles.radio}
+                                        onClick={() => setLayer(true)}
                                     />
-                                )}
-                            </div>
-                            <input
-                                type="text"
-                                name="color"
-                                id="color"
-                                value={color}
-                                onChange={handleInputColorChange}
-                                required
-                                style={styles.input}
-                            />
-                        </div>
-                        <div style={styles.formGroup}>
-                            <select
-                                value={category}
-                                onChange={(e) => setCategory(e.target.value)}
-                            >
-                                <option value="">Select a main category</option>
-                                {mainCategories?.map((category) => (
-                                    <option key={category._id} value={category._id}>
-                                        {category.name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div style={styles.formGroup}>
-                            <label htmlFor="multilayer" style={styles.label}>
-                                Multilayers
-                            </label>
-                            <div>
-                                <input
-                                    type="radio"
-                                    id="enableMultilayers"
-                                    name="multilayer"
-                                    value="true"
-                                    style={styles.radio}
-                                    onClick={() => setLayer(true)}
-                                />
-                                <label htmlFor="enableMultilayers" style={styles.radioLabel}>
-                                    Enable
-                                </label>
-                                <input
-                                    type="radio"
-                                    id="disableMultilayers"
-                                    name="multilayer"
-                                    value="false"
-                                    style={styles.radio}
-                                    onClick={() => setLayer(false)}
-                                />
-                                <label htmlFor="disableMultilayers" style={styles.radioLabel}>
-                                    Disable
-                                </label>
-                            </div>
-                        </div>
-                        <div className="mb-4" style={styles.formGroup}>
-                            <label className="form-label">Frame Images </label>{" "}
-                            <input
-                                className="form-control mt-3"
-                                type="file"
-                                name="image"
-                                onChange={(e) => postDetails(e)}
-                            />
-                        </div>{" "}
-                        {uploading && <p>Uploading image...</p>}
-                        <button type="submit" style={styles.submitButton}>
-                            {edit ? "Edit Frame" : "  Upload Frame"}
-                        </button>
-                    </form>
-                </div>
-                <h1>Frames</h1>
-                <div className="frames">
-                    {frames?.map((item, index) => {
-                        return (
-                            <div className="frame">
-                                <div className="img">
-                                    <img src={item.image} alt="" />
-                                </div>
-                                <div className="details">
-                                    <h3>{item.title}</h3>
-                                    <button onClick={() => deleteFrame(item._id)}>Delete</button>
-                                    <button onClick={() => editFrame(item._id)}>edit</button>
+                                    <label htmlFor="enableMultilayers" style={styles.radioLabel}>
+                                        Enable
+                                    </label>
+                                    <input
+                                        type="radio"
+                                        id="disableMultilayers"
+                                        name="multilayer"
+                                        value="false"
+                                        style={styles.radio}
+                                        onClick={() => setLayer(false)}
+                                    />
+                                    <label htmlFor="disableMultilayers" style={styles.radioLabel}>
+                                        Disable
+                                    </label>
                                 </div>
                             </div>
-                        );
-                    })}
-                </div>
+                            <div className="mb-4" style={styles.formGroup}>
+                                <label className="form-label">Frame Images </label>{" "}
+                                <input
+                                    className="form-control mt-3"
+                                    type="file"
+                                    name="image"
+                                    onChange={(e) => postDetails(e)}
+                                />
+                            </div>{" "}
+                            {uploading && <p>Uploading image wait... </p>}
+                            {Image && (
+                                <img
+                                    src={Image}
+                                    style={{
+                                        width: "40px",
+                                    }}
+                                    alt=""
+                                />
+                            )}
+                            {!uploading && (
+                                <button type="submit" style={styles.submitButton}>
+                                    {edit ? "Edit Frame" : "  Upload Frame"}
+                                </button>
+                            )}
+                        </form>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -16,12 +16,10 @@ app.use(express.json());
 app.use(cors());
 console.log(process.env.PORT);
 
-
-
 app.use("/api/users", userRoutes);
 app.use("/api/frame", frameRoutes);
 app.use("/api/contact", inquiryRoutes);
-app.use("/api/art", artRoutes);
+app.use("/api", artRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use(notFound);
 app.use(errorHandler);

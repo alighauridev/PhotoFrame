@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
 const artworkSchema = new mongoose.Schema({
-  artist: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ArtistInfo",
+    ref: "UserInfo",
   },
+
   image: {
     type: String,
     required: true,

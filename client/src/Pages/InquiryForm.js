@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../scss/inquiry.scss';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 function InquiryForm() {
@@ -8,15 +8,37 @@ function InquiryForm() {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
+    const artwork = useSelector((state => state.ArtworkDetails.product._id))
     const frame = useSelector((state => state.ProductDetails.product._id))
     const user = useSelector((state => state.UserLogin.userInfo._id))
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { id, mode } = useParams();
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const { data } = await axios.post('/api/contact', { name, email, message, frame, user });
-        alert(data.message);
-        navigate('/frames');
+        if (mode === "artwork") {
+            e.preventDefault();
+            const { data } = await axios.post('/api/contact/artwork', {
+                email,
+                name,
+                phone,
+                message,
+                artwork,
+                user,
+            });
+            alert(data.message);
+            navigate('/artworks-all');
+        } else {
+            e.preventDefault();
+            const { data } = await axios.post('/api/contact/frame', {
+                email,
+                name,
+                phone,
+                message,
+                frame,
+                user,
+            });
+            alert(data.message);
+            navigate('/frames-all');
+        }
     };
     console.log(id);
 
@@ -34,7 +56,7 @@ function InquiryForm() {
                 </div>
                 <div className="form-group">
                     <label htmlFor="phone">Phone:</label>
-                    <input type="tel" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+                    <input type="number" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
                 </div>
                 <div className="form-group">
                     <label htmlFor="message">Message:</label>

@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { getFilterProductReducer } from "./filterProductReducer";
 import { cartReducer } from "./cartReducer";
-import { allProductsReducer, frameFilterReducer, productCreateReviewReducer, singleProductReducer } from "./productReducers";
+import { allArtworkReducer, allProductsReducer, artworkFilterReducer, frameFilterReducer, productCreateReviewReducer, singleProductReducer, singleArtworkReducer } from "./productReducers";
 import {
   userLoginReducer,
   userRegisterReducer,
@@ -16,8 +16,11 @@ import {
 } from "./orderReducers";
 const RootReducer = combineReducers({
   Products: allProductsReducer,
+  Artworks: allArtworkReducer,
   Filters: frameFilterReducer,
+  artworkFilters: artworkFilterReducer,
   ProductDetails: singleProductReducer,
+  ArtworkDetails: singleArtworkReducer,
   ProductCreateReview: productCreateReviewReducer,
   Cart: cartReducer,
   Checkout: shippingDetailsReducer,

@@ -1,9 +1,33 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import './Scss/Profile.scss'
 import MainPannel from './MainPannel'
 import Navigation from '../Navigation'
 import { AiOutlineUser } from 'react-icons/ai'
+import axios from "axios";
+import { Container, Form, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { updateProfile } from "../../Redux/actions/userActions";
 const Profile = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState(null);
+    const user = useSelector(state => state.UserLogin?.userInfo)
+    useEffect(() => {
+        setName(user?.name);
+        setEmail(user?.email);
+    }, []);
+    const dispatch = useDispatch();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            dispatch(updateProfile({ name, email, password, user: user._id }));
+
+            setMessage("Profile updated successfully");
+        } catch (error) {
+            setMessage(`Failed to update profile: ${error.message}`);
+        }
+    };
     return (
         <Fragment>
             <Navigation />
@@ -11,60 +35,48 @@ const Profile = () => {
                 <div>
                     <MainPannel />
                 </div>
-               <div>
-               <div className='profile-img'>
-                    <div className='img'>
-                        <div className='user-icon'>
-                        <AiOutlineUser className='icon' />
-                        </div>
-                  
-                        <div>
-                        <h1>Profile</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, sapiente!</p>
-                        </div>
-                    </div>
-                    <div className='save-canel'>
-                        <button className='cancel'>Cancel</button>
-                        <button className='save'>Save</button>
-                    </div>
+                <div>
+                    <Container>
+                        <h1>Update Profile</h1>
+                        {message && <p>{message}</p>}
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group controlId="formName">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="formEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    placeholder="Enter email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="formPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit">
+                                Update Profile
+                            </Button>
+                        </Form>
+                    </Container>
                 </div>
-                <div className='user-name-parent'>
-                    <div className='user-name'>
-                        <div>
-                            <span>Username:</span>
-                            
-                        </div>
-                        <div>
-                        <input type="text" placeholder='enter your username' />
-                        </div>
-                    </div>
-                    <div className='user-name'>
-                        <div>
-                            <span>Enter Your Website:</span>
-                            
-                        </div>
-                        <div>
-                        <input type="text" placeholder='enter your Website' />
-                        </div>
-                    </div>
-                  
-                </div>
-            
-                <div className='upload-photo'>
-                        <div style={{marginLeft:"80px"}}>
-                            <span>Upload Your Photo : </span>
-                            
-                        </div>
-                        <div>
-                        <input type="file"/>
-                        </div>
-                        <div className='save-canel '>
-                        <button className='cancel'>Cancel</button>
-                        <button className='save'>Update</button>
-                        </div>
-                    </div>
-                </div>
-               
+
             </div>
         </Fragment>
     )

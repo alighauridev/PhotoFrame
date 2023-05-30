@@ -1,25 +1,24 @@
-.inquiry-parent{
-    display: grid;
-    grid-template-columns: 1fr 8fr;
+.inquiry-parent {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  table {
     width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    height: 100vh;
-    table{
-        width: 100%;
-        padding: 0 40px;
-        margin-top: 40px;
+    padding: 0 40px;
+    margin-top: 40px;
 
-        tr{
-            td{
-                border: 1px solid black;
-                padding: 10px 10px;
-                button{
-                    width: 100%;
-                    border: none;
-                    background: none;
-                }
-            }
+    tr {
+      td {
+        border: 1px solid black;
+        padding: 10px 10px;
+        button {
+          width: 100%;
+          border: none;
+          background: none;
         }
+      }
     }
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../api/axiosa";
 import styled from "styled-components";
+import Navigation from "../pages/Navigation";
 
 const Container = styled.div`
   padding: 20px;
@@ -56,39 +57,42 @@ const AdminInquiries = () => {
   }, []);
 
   return (
-    <Container>
-      <Title>Admin Inquiries</Title>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableHeading>Name</TableHeading>
-            <TableHeading>Email</TableHeading>
-            <TableHeading>Message</TableHeading>
-            <TableHeading>Frame</TableHeading>
-          </TableRow>
-        </TableHead>
-        <tbody>
-          {inquiries.map((inquiry) => (
-            <TableRow key={inquiry._id}>
-              <TableCell>{inquiry.name}</TableCell>
-              <TableCell>{inquiry.email}</TableCell>
-              <TableCell>{inquiry.message}</TableCell>
-              <TableCell
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
-                <div className="start">
-                  <h5> {inquiry.frame?.title}</h5>
-                  <p> {inquiry.frame?.description}</p>
-                </div>
-                <div className="end">
-                  <img src={inquiry.frame?.image} height={"40px"} alt="" />
-                </div>
-              </TableCell>
+    <>
+      <Navigation />
+      <Container>
+        <Title>Admin Inquiries</Title>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeading>Name</TableHeading>
+              <TableHeading>Email</TableHeading>
+              <TableHeading>Message</TableHeading>
+              <TableHeading>Frame</TableHeading>
             </TableRow>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
+          </TableHead>
+          <tbody>
+            {inquiries.map((inquiry) => (
+              <TableRow key={inquiry._id}>
+                <TableCell>{inquiry.name}</TableCell>
+                <TableCell>{inquiry.email}</TableCell>
+                <TableCell>{inquiry.message}</TableCell>
+                <TableCell
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <div className="start">
+                    <h5> {inquiry.frame?.title}</h5>
+                    <p> {inquiry.frame?.description}</p>
+                  </div>
+                  <div className="end">
+                    <img src={inquiry.frame?.image} height={"40px"} alt="" />
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
+      </Container>
+    </>
   );
 };
 

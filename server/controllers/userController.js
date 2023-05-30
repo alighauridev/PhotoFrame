@@ -37,6 +37,8 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            artworks: user.artworks,
+            frames: user.frames,
             token: generateToken(user._id),
             createdAt: user.createdAt,
         });
@@ -46,7 +48,7 @@ const authUser = asyncHandler(async (req, res) => {
     }
 });
 const updateUserProfile = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.body.user);
 
     if (user) {
         user.name = req.body.name || user.name;

@@ -39,34 +39,42 @@ const Product = () => {
             <Productbanner />
             <div className="product-parent">
                 {/* SECOND MAIN GRID SECTION START HERE */}
-                <button style={{
-                    boxShadow: 'rgba(0, 0, 0, 0.15) 0px 2px 8px 0px',
-                    cursor: 'pointer',
-                    fontWeight: '700',
-                    fontSize: '16px',
-                    fontFamily: 'Montserrat, sans-serif',
-                    textDecoration: 'none',
-                    textAlign: 'center',
-                    pointerEvents: 'all',
-                    transition: 'all 0.3s ease 0s',
-                    textTransform: 'none',
-                    border: '2px solid #272727',
-                    backgroundColor: '#272727',
-                    color: 'white',
-                    borderRadius: '4px',
-                    margin: '10px 10px',
-                    padding: '15px 32px'
-                }} className="filter__toggle" onClick={() => settoggle(!toggle)}> Filters</button>
+                <button
+                    style={{
+                        boxShadow: "rgba(0, 0, 0, 0.15) 0px 2px 8px 0px",
+                        cursor: "pointer",
+                        fontWeight: "700",
+                        fontSize: "16px",
+                        fontFamily: "Montserrat, sans-serif",
+                        textDecoration: "none",
+                        textAlign: "center",
+                        pointerEvents: "all",
+                        transition: "all 0.3s ease 0s",
+                        textTransform: "none",
+                        border: "2px solid #272727",
+                        backgroundColor: "#272727",
+                        color: "white",
+                        borderRadius: "4px",
+                        margin: "10px 10px",
+                        padding: "15px 32px",
+                    }}
+                    className="filter__toggle"
+                    onClick={() => settoggle(!toggle)}
+                >
+                    {" "}
+                    Filters
+                </button>
                 <div className="colors-filter-product-parent">
                     {/* SIDEBAR SECTION START HERE */}
 
-                    <SideBarFilters toggle={toggle} settoggle={settoggle} />
+                    <SideBarFilters art={false} toggle={toggle} settoggle={settoggle} />
 
                     {/* PRODUCT IMAGES SECTION START HERE */}
                     <ProductsGrid
                         frames={frames}
                         pages={pages}
                         keyword={keyword}
+                        art={false}
                         pageNumber={pageNumber}
                     />
                 </div>

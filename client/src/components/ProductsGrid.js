@@ -4,7 +4,7 @@ import { product } from "../assests/data";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../Redux/actions/productActions";
-const ProductsGrid = ({ frames, pages, pageNumber }) => {
+const ProductsGrid = ({ frames, pages, pageNumber, art }) => {
     const [value, setValue] = useState();
     const [page, setPage] = useState(0);
     const [keyword, setKeyword] = useState();
@@ -17,8 +17,13 @@ const ProductsGrid = ({ frames, pages, pageNumber }) => {
     const searchHandler = (e) => {
         e.preventDefault();
         if (keyword.trim()) {
-            navigate(`/search/${keyword}`);
-            console.log(keyword);
+            if (!art) {
+                navigate(`/frame/search/${keyword}`);
+                console.log(keyword);
+            } else {
+                navigate(`/artwork/search/${keyword}`);
+                console.log(keyword);
+            }
         } else {
             navigate(`/`);
         }
@@ -45,7 +50,15 @@ const ProductsGrid = ({ frames, pages, pageNumber }) => {
                     <>
                         {frames?.map((frame) => {
                             return (
-                                <div onClick={() => navigate(`/frames/${frame._id}`)}>
+                                <div
+                                    onClick={() =>
+                                        navigate(
+                                            art
+                                                ? `/artworks-all/${frame._id}`
+                                                : `/frames-all/${frame._id}`
+                                        )
+                                    }
+                                >
                                     <div className="img">
                                         <img src={frame.image} />
                                     </div>
@@ -59,7 +72,7 @@ const ProductsGrid = ({ frames, pages, pageNumber }) => {
                     </>
                 ) : (
                     <h2 style={{ height: "45vh" }}>
-                        <center>No Frame Available</center>
+                        <center>No items Available</center>
                     </h2>
                 )}
             </div>

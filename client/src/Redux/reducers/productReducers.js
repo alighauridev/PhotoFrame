@@ -12,8 +12,17 @@ import {
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_LIST_FAIL,
+    ARTWORK_LIST_REQUEST,
+    ARTWORK_LIST_SUCCESS,
+    ARTWORK_LIST_FAIL,
     PRODUCT_LIST_REQUEST,
     PRODUCT_LIST_SUCCESS,
+    ARTWORK_FILTERS_REQUEST,
+    ARTWORK_FILTERS_FAIL,
+    ARTWORK_FILTERS_SUCCESS,
+    ARTWORK_DETAILS_FAIL,
+    ARTWORK_DETAILS_SUCCESS,
+    ARTWORK_DETAILS_REQUEST
 } from "../constants/productConstants";
 
 const initialstate = {
@@ -38,9 +47,25 @@ export const allProductsReducer = (state = initialstate, action) => {
             return state;
     }
 };
+export const allArtworkReducer = (state = initialstate, action) => {
+    switch (action.type) {
+        case ARTWORK_LIST_REQUEST:
+            return { loading: true, products: [] };
+        case ARTWORK_LIST_SUCCESS:
+            return {
+                loading: false,
+                pages: action.payload.pages,
+                page: action.payload.page,
+                artworks: action.payload.artworks,
+            };
+        case ARTWORK_LIST_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
 export const frameFilterReducer = (state = {
-    materials: [],
-    types: []
+
 }, action) => {
     switch (action.type) {
         case FRAME_FILTERS_REQUEST:
@@ -48,10 +73,26 @@ export const frameFilterReducer = (state = {
         case FRAME_FILTERS_SUCCESS:
             return {
 
-                categories: action.payload.categories,
-                colors: action.payload.colors
+                categories: action.payload,
             };
         case FRAME_FILTERS_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+export const artworkFilterReducer = (state = {
+
+}, action) => {
+    switch (action.type) {
+        case ARTWORK_FILTERS_REQUEST:
+            return { loading: true, state };
+        case ARTWORK_FILTERS_SUCCESS:
+            return {
+
+                categories: action.payload,
+            };
+        case ARTWORK_FILTERS_FAIL:
             return { loading: false, error: action.payload };
         default:
             return state;
@@ -86,6 +127,19 @@ export const singleProductReducer = (state = { product: { reviews: [] } }, actio
         case PRODUCT_DETAILS_SUCCESS:
             return { loading: false, product: action.payload };
         case PRODUCT_DETAILS_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+};
+
+export const singleArtworkReducer = (state = { product: { reviews: [] } }, action) => {
+    switch (action.type) {
+        case ARTWORK_DETAILS_REQUEST:
+            return { ...state, loading: true, products: [] };
+        case ARTWORK_DETAILS_SUCCESS:
+            return { loading: false, product: action.payload };
+        case ARTWORK_DETAILS_FAIL:
             return { loading: false, error: action.payload };
         default:
             return state;

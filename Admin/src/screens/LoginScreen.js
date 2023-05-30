@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { login } from "../Redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/axiosa";
 import { USER_LOGIN_SUCCESS } from "../Redux/constants/userConstants";
 
 const Login = () => {

@@ -1,9 +1,9 @@
-import React from 'react'
-import Navigation from '../components/Navigation'
-import Banner from '../components/Banner'
-import AboutNft from '../components/AboutNft'
-import Material from '../components/Material'
-import Footer from '../components/Footer'
+import React from "react";
+import Navigation from "../components/Navigation";
+import Banner from "../components/Banner";
+import AboutNft from "../components/AboutNft";
+import Material from "../components/Material";
+import Footer from "../components/Footer";
 
 const Home = () => {
     return (
@@ -14,7 +14,7 @@ const Home = () => {
             <Material />
             <Footer />
         </>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

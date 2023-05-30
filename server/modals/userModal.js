@@ -20,10 +20,18 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    isArtist: {
-        type: Boolean,
-        default: false,
-    },
+    artworks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "artwork",
+        },
+    ],
+    frames: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "FrameImage",
+        },
+    ],
 });
 
 userSchema.pre("save", async function (next) {
