@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSingleProduct } from '../Redux/actions/productActions'
 import ImageDropZone from './ImageDropZone'
 import Productbanner from './Productbanner'
+import ImageCard from './ImageCard'
 const ProductDetail = () => {
     const [value, setValue] = useState();
     const { id } = useParams();
@@ -38,8 +39,9 @@ const ProductDetail = () => {
                 <div className='detail'>
 
                     <div className='pic-frame'>
-                        <div className='file-chose'>
-                            <img src={image} />
+                        <div className='frame frame__three'>
+                            <ImageCard rod={product} />
+                            {/* <img src={image} /> */}
                         </div>
 
                         <div className="detail-description">

@@ -25,11 +25,13 @@ const Rods = ({ rotatedImages, rod }) => {
                     position: "absolute",
                     bottom: "0px",
                     left: "0",
-                    backgroundImage: `url(${rotatedImages.angle180})`,
+                    backgroundImage: `url(${rod.image})`,
                     backgroundSize: "contain",
                     height: "30px",
                     width: "100%",
                     backgroundRepeat: "repeat",
+
+                    transform: 'rotateX(180deg)'
                 }}
             ></div>
 

@@ -4,6 +4,7 @@ import { product } from "../assests/data";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../Redux/actions/productActions";
+import ImageCard from "./ImageCard";
 const ProductsGrid = ({ frames, pages, pageNumber, art }) => {
     const [value, setValue] = useState();
     const [page, setPage] = useState(0);
@@ -59,8 +60,8 @@ const ProductsGrid = ({ frames, pages, pageNumber, art }) => {
                                         )
                                     }
                                 >
-                                    <div className="img">
-                                        <img src={frame.image} />
+                                    <div className="frame">
+                                        <ImageCard rod={frame} />
                                     </div>
                                     <h4>{frame.title}</h4>
                                     <p>{frame.description}</p>

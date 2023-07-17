@@ -15,6 +15,7 @@ import AdminFramesPage from "./pages/AdminFramesPage";
 import AdminArtworkPage from "./pages/AdminArtworkPage";
 import InquiriesPage from "./pages/InquiriesPage";
 import ArtWorkInquiries from "./pages/ArtWorkInquiries";
+import UserTable from "./pages/UserTable";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ function App() {
           <Route path="/inquires" element={<AdminInquiries />} />
         </Route>
         <Route path="/login" element={<Login />} />{" "}
+        <Route path="/users" element={<UserTable />} />{" "}
       </Routes>
     </>
   );

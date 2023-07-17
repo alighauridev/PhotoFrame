@@ -14,6 +14,7 @@ const Navigation = () => {
                     <li><Link to="/new-artwork">New Artworks</Link></li>
                     <li><Link to="/frame-inquiries">Frame Inquiries</Link></li>
                     <li><Link to="/artwork-inquiries">Artwork Inquiries</Link></li>
+                    <li><Link to="/users">User</Link></li>
                 </ul>
             </nav>
 
