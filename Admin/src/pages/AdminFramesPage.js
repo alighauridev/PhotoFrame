@@ -48,8 +48,8 @@ const AdminFramesPage = () => {
                                     <h5 className="card-title">Frame ID: {frame._id}</h5>
                                     <p className="card-text">Frame Name: {frame.title}</p>
                                     <p className="card-text">Frame Description: {frame.description}</p>
-                                    <p>User Name: {frame.user.name}</p>
-                                    <p>User Email: {frame.user.email}</p>
+                                    <p>User Name: {frame?.user?.name}</p>
+                                    <p>User Email: {frame?.user?.email}</p>
                                     <p>Created: {formatDistanceToNow(new Date(frame.createdAt))} ago</p>
                                 </div>
                                 <div className="col-6">

@@ -6,7 +6,15 @@
   .pad-60 {
     padding: 60px;
   }
-
+  .full__image {
+    max-width: 500px;
+    margin: auto;
+    min-height: 560px;
+    box-shadow: #000000b3 9px 9px 10px 0px;
+    img {
+      width: 90%;
+    }
+  }
   .frame__box {
     position: relative;
     overflow: unset;

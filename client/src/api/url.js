@@ -1,6 +1,7 @@
 const urls = {
   // baseUrl: "https://moto-tank-backend.vercel.app",
-  baseUrl: "https://ase-server2.onrender.com/",
+  // baseUrl: "https://ase-server2.onrender.com/",
+  baseUrl: "https://localhost:5000/",
   auth: {
     login: "/auth/login",
     signup: "/auth/signup",

@@ -14,6 +14,7 @@ import { getSingleProduct } from '../Redux/actions/productActions'
 import ImageDropZone from './ImageDropZone'
 import Productbanner from './Productbanner'
 import ImageCard from './ImageCard'
+import Editor from './Editor'
 const ProductDetail = () => {
     const [value, setValue] = useState();
     const { id } = useParams();
@@ -40,8 +41,10 @@ const ProductDetail = () => {
 
                     <div className='pic-frame'>
                         <div className='frame frame__three'>
-                            <ImageCard rod={product} />
-                            {/* <img src={image} /> */}
+                            {
+                                product.patch ? <ImageCard rod={product} /> : <img style={{ width: '100%' }} src={product.image} alt="" />
+                            }
+
                         </div>
 
                         <div className="detail-description">
@@ -93,7 +96,7 @@ const ProductDetail = () => {
                 </div>
 
                 {
-                    product && <ImageDropZone framePiece={product} />
+                    product && <Editor framePiece={product} />
                 }
 
                 {/* <div>

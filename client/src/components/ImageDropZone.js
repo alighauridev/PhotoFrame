@@ -70,7 +70,21 @@ function ImageDropZone({ framePiece }) {
                             </div>
                         }
                     </div>
-                    <FrameImage mainImageUrl={image} rod={framePiece} />
+                    {
+                        framePiece.patch ? <FrameImage mainImageUrl={image} rod={framePiece} /> : <div className="full__image" style={{
+                            backgroundImage: `url(${framePiece.image})`,
+
+                            padding: '5%',
+                            backgroundRepeat: 'no-repeat',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundPosition: 'center',
+                            backgroundSize: '100%'
+                        }}>
+                            <img src={image} alt="" />
+                        </div>
+                    }
                 </div>
             </section >
         </>

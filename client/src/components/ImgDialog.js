@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
+import { withStyles } from '@mui/styles';
+import Dialog from '@mui/material/Dialog';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import CloseIcon from '@mui/icons-material/Close';
+import Slide from '@mui/material/Slide';
+import FrameImage from './FrameImage';
 
 const styles = {
     appBar: {
@@ -29,12 +30,8 @@ const styles = {
     },
 };
 
-function Transition(props) {
-    return <Slide direction="up" {...props} />;
-}
-
 const ImgDialog = (props) => {
-    const { classes } = props;
+    const { classes, framePiece } = props;
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -44,26 +41,9 @@ const ImgDialog = (props) => {
     const handleClose = () => {
         setOpen(false);
     };
+
     const postDetails = async (img) => {
-        try {
-            const response = await fetch(img);
-            const blob = await response.blob();
-            const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
-
-            const data = new FormData();
-            data.append("file", file);
-            data.append("upload_preset", "notesapp");
-            data.append("cloud_name", "dipcjbjho");
-            const uploadResponse = await fetch("https://api.cloudinary.com/v1_1/dipcjbjho/image/upload", {
-                method: "post",
-                body: data,
-            });
-            const result = await uploadResponse.json();
-
-            console.log(result.url.toString());
-        } catch (err) {
-            console.log(err);
-        }
+        console.log(img);
     };
 
     return (
@@ -71,7 +51,7 @@ const ImgDialog = (props) => {
             fullScreen
             open={!!props.img}
             onClose={props.onClose}
-            TransitionComponent={Transition}
+            TransitionComponent={Slide}
         >
             <div>
                 <AppBar className={classes.appBar}>
@@ -84,17 +64,42 @@ const ImgDialog = (props) => {
                             <CloseIcon />
                         </IconButton>
                         <Typography
-                            variant="title"
+                            variant="h6"
                             color="inherit"
                             className={classes.flex}
                         >
-                            Cropped image
+                            Your Image
                         </Typography>
                     </Toolbar>
                 </AppBar>
                 <div className={classes.imgContainer}>
-                    <img src={props.img} alt="Cropped" className={classes.img} />
-                    <button onClick={() => postDetails(props.img)}>upload</button>
+                    <section className="frame">
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns: "1fr",
+                                gridGap: "3rem",
+                                marginBottom: "50px",
+                            }}
+                        >
+
+                            {
+                                framePiece.patch ? <FrameImage mainImageUrl={props.img} rod={framePiece} /> : <div className="full__image" style={{
+                                    backgroundImage: `url(${framePiece.image})`,
+
+                                    padding: '5%',
+                                    backgroundRepeat: 'no-repeat',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    backgroundPosition: 'center',
+                                    backgroundSize: '100%'
+                                }}>
+                                    <img src={props.img} alt="" />
+                                </div>
+                            }
+                        </div>
+                    </section >
                 </div>
             </div>
         </Dialog>

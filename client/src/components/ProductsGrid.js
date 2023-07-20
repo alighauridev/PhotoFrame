@@ -61,7 +61,9 @@ const ProductsGrid = ({ frames, pages, pageNumber, art }) => {
                                     }
                                 >
                                     <div className="frame">
-                                        <ImageCard rod={frame} />
+                                        {
+                                            frame.patch ? <ImageCard rod={frame} /> : <img style={{ width: '100%', maxHeight: '300px' }} src={frame.image} alt="" />
+                                        }
                                     </div>
                                     <h4>{frame.title}</h4>
                                     <p>{frame.description}</p>

@@ -1,10 +1,23 @@
-export const styles = theme => ({
+import { createTheme } from "@mui/material/styles";
+
+// Define custom breakpoints for responsive styles
+const theme = createTheme();
+const customBreakpoints = {
+    ...theme.breakpoints,
+    xs: 0,
+    sm: 600,
+    md: 960,
+    lg: 1280,
+    xl: 1920,
+};
+
+export const styles = {
     cropContainer: {
         position: 'relative',
         width: '100%',
         height: 200,
         background: '#333',
-        [theme.breakpoints.up('sm')]: {
+        [customBreakpoints.up('sm')]: {
             height: 400,
         },
     },
@@ -17,7 +30,7 @@ export const styles = theme => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'stretch',
-        [theme.breakpoints.up('sm')]: {
+        [customBreakpoints.up('sm')]: {
             flexDirection: 'row',
             alignItems: 'center',
         },
@@ -28,17 +41,18 @@ export const styles = theme => ({
         alignItems: 'center',
     },
     sliderLabel: {
-        [theme.breakpoints.down('xs')]: {
-            minWidth: 65,
+        minWidth: 65,
+        [customBreakpoints.up('sm')]: {
+            minWidth: 'auto',
         },
     },
     slider: {
         padding: '22px 0px',
         marginLeft: 16,
-        [theme.breakpoints.up('sm')]: {
+        [customBreakpoints.up('sm')]: {
             flexDirection: 'row',
             alignItems: 'center',
             margin: '0 16px',
         },
     },
-})
+};

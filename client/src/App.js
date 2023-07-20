@@ -35,6 +35,7 @@ import Artwork from "./components/Artwork";
 import ArtworkDetails from "./components/ArtworkDetails";
 import InquiriesPage from "./Pages/InquiriesPage";
 import ArtWorkInquiries from "./Pages/ArtWorkInquiries";
+import Editor from "./components/Editor";
 
 function App() {
   let [loading, setLoading] = useState(true);
