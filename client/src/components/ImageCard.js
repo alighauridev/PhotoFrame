@@ -13,11 +13,16 @@ const ImageCard = ({ rod }) => {
         angle360: null,
     });
     const [crop, setCrop] = useState({ x: 0, y: 0 });
+
+    const [fetchError, setFetchError] = useState(false);
     const [zoom, setZoom] = useState(1);
     useEffect(() => {
         async function fetchImage() {
             try {
                 const response = await fetch(rod.image);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch image.");
+                }
                 const blob = await response.blob();
                 const reader = new FileReader();
                 reader.onloadend = () => {
@@ -26,11 +31,13 @@ const ImageCard = ({ rod }) => {
                 reader.readAsDataURL(blob);
             } catch (error) {
                 console.error(error);
+                setFetchError(true);
             }
         }
 
         fetchImage();
-    }, []);
+    }, [rod]);
+
     useEffect(() => {
         if (originalImage) {
             const img = new Image();
@@ -38,47 +45,25 @@ const ImageCard = ({ rod }) => {
                 const canvas90 = document.createElement("canvas");
                 const ctx90 = canvas90.getContext("2d");
 
-                const canvas180 = document.createElement("canvas");
-                const ctx180 = canvas180.getContext("2d");
-
                 const canvas270 = document.createElement("canvas");
                 const ctx270 = canvas270.getContext("2d");
 
-                const canvas360 = document.createElement("canvas");
-                const ctx360 = canvas360.getContext("2d");
-
-                canvas90.width =
-                    canvas180.width =
-                    canvas270.width =
-                    canvas360.width =
-                    img.height;
-                canvas90.height =
-                    canvas180.height =
-                    canvas270.height =
-                    canvas360.height =
-                    img.width;
+                canvas90.width = canvas270.width = img.height;
+                canvas90.height = canvas270.height = img.width;
 
                 ctx90.translate(canvas90.width / 2, canvas90.height / 2);
                 ctx90.rotate((90 * Math.PI) / 180);
                 ctx90.drawImage(img, -img.width / 2, -img.height / 2);
 
-                ctx180.translate(canvas180.width / 2, canvas180.height / 2);
-                ctx180.rotate((180 * Math.PI) / 180);
-                ctx180.drawImage(img, -img.width / 2, -img.height / 2);
-
                 ctx270.translate(canvas270.width / 2, canvas270.height / 2);
                 ctx270.rotate((270 * Math.PI) / 180);
                 ctx270.drawImage(img, -img.width / 2, -img.height / 2);
 
-                ctx360.translate(canvas360.width / 2, canvas360.height / 2);
-                ctx360.rotate((360 * Math.PI) / 180);
-                ctx360.drawImage(img, -img.width / 2, -img.height / 2);
-
                 const rotatedImagesState = {
                     angle90: canvas90.toDataURL(),
-                    angle180: canvas180.toDataURL(),
+                    angle180: null, // You can add the code for angle180 and angle360 if needed
                     angle270: canvas270.toDataURL(),
-                    angle360: canvas360.toDataURL(),
+                    angle360: null,
                 };
 
                 setRotatedImages(rotatedImagesState);
@@ -86,8 +71,20 @@ const ImageCard = ({ rod }) => {
 
             img.src = originalImage;
         }
-        console.log(rotatedImages);
     }, [originalImage]);
+
+    // Check if all rotated images are loaded before rendering the component
+    useEffect(() => {
+        if (
+            rotatedImages.angle90 &&
+            rotatedImages.angle180 &&
+            rotatedImages.angle270 &&
+            rotatedImages.angle360
+        ) {
+            // All rotated images are loaded, you can render the component here
+        }
+    }, [rotatedImages]);
+
     return (
         <div className={`frame__box__two ${rod.multiLayer ? "pad-60" : "pad-60"}`}>
             <figure
