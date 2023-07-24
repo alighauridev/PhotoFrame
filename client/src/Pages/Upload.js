@@ -11,9 +11,9 @@ const Upload = () => {
     <div>
     <div>
       
-       <label htmlFor="upload"> <center><button style={{background:'#4890A9',borderRadius:'50px',padding:'13px 25px',color:'white',border:'none'}}>Upload Photo</button></center></label>
+    <center><label htmlFor="upload"><button style={{background:'#4890A9',borderRadius:'50px',padding:'13px 25px',color:'white',border:'none'}}>Upload Photo</button>
        <input type="file" id='upload'  style={{display:'none'}}/>
-         
+       </label></center>
       </div>
     </div>
   </div>
