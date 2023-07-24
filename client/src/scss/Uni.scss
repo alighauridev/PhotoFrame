@@ -1,8 +1,8 @@
 @import './media.scss';
-.how-parent{
+ .uni-parent{
     @include lg{
-        flex-direction: column !important;
+        flex-direction: column;
         width: 90%;
         margin: auto;
     }
-}
+ }

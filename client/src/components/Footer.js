@@ -64,14 +64,14 @@ import {AiOutlineInstagram,AiOutlineTwitter,AiOutlineGithub} from 'react-icons/a
 const Footer = () => {
   return (
     <div style={{padding:'80px 0 40px 0',background:'#F8F8F8'}}>
-    <div style={{display:'flex',justifyContent:'center',gap:'40px'}}>
+    <div style={{display:'flex',justifyContent:'center',gap:'40px',flexWrap:'wrap'}}>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Home</h4>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>About Us</h4>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>How Its Work</h4>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Services</h4>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Partners</h4>
     </div>
-    <div style={{display:'flex',justifyContent:'center',gap:'40px ',marginTop:'20px'}}>
+    <div style={{display:'flex',justifyContent:'center',gap:'40px ',marginTop:'20px',flexWrap:'wrap'  }}>
 <BsFacebook style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
 <AiOutlineInstagram style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
 <AiOutlineTwitter style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
