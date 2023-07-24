@@ -75,7 +75,7 @@ const ProductsGrid = ({ frames, pages, pageNumber, art }) => {
                     </>
                 ) : (
                     <h2 style={{ height: "45vh" }}>
-                        <center>No items Available</center>
+                        <center>loading....</center>
                     </h2>
                 )}
             </div>

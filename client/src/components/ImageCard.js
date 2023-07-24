@@ -30,7 +30,7 @@ const ImageCard = ({ rod }) => {
         }
 
         fetchImage();
-    }, [rod]);
+    }, []);
     useEffect(() => {
         if (originalImage) {
             const img = new Image();

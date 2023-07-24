@@ -95,7 +95,7 @@ const ImgDialog = (props) => {
                                     backgroundPosition: 'center',
                                     backgroundSize: '100%'
                                 }}>
-                                    <img src={props.img} alt="" />
+                                    <img style={{ width: framePiece.patch ? "90%" : "80%" }} src={props.img} alt="" />
                                 </div>
                             }
                         </div>

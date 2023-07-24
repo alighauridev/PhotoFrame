@@ -22,7 +22,7 @@ const Editor = ({ classes, framePiece }) => {
     const [zoom, setZoom] = useState(1);
     const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
     const [croppedImage, setCroppedImage] = useState(null);
-
+    console.log(framePiece);
     const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
         setCroppedAreaPixels(croppedAreaPixels);
     }, []);
@@ -63,10 +63,7 @@ const Editor = ({ classes, framePiece }) => {
 
     return (
         <div style={{
-            height: '40vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+
         }}>
             {imageSrc ? (
                 <React.Fragment>
@@ -76,7 +73,7 @@ const Editor = ({ classes, framePiece }) => {
                             crop={crop}
                             rotation={rotation}
                             zoom={zoom}
-                            aspect={4 / 4}
+                            aspect={framePiece.patch ? 4 / 4 : 4.5 / 4}
                             onCropChange={setCrop}
                             onRotationChange={setRotation}
                             onCropComplete={onCropComplete}
