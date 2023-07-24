@@ -7,7 +7,7 @@ const How = () => {
             <center><h1 style={{fontFamily:'Montserrat, system-ui',fontSize:'48px',fontWeight:'600'}}>How it work</h1></center>
             <center><p style={{color:'#00000080',lineHeight:'25px'}}>Stacks is a production-ready library of stackable <br /> content blocks built in React Native.</p></center>
         </div>
-        <div style={{display:"flex",justifyContent:'center',gap:'40px',padding:'60px 0'}}>
+        <div style={{display:"flex",justifyContent:'center',gap:'40px',padding:'60px 0'}} className='how-parent'>
             <div>
                 <center>
                 <img src="./images/h1.png" alt="" width={'30%'} />
