@@ -6,7 +6,7 @@ export const SwiperNavButtons = () => {
 
   return (
     <div className="swiper-nav-btns" style={{display:'flex',justifyContent:'center'}}>
-      <button onClick={() => swiper.slidePrev()}><span style={{color:'white !Important'}}><AiOutlineArrowLeft style={{color:'white !Important'}}/></span></button>
+      <button onClick={() => swiper.slidePrev()}><span style={{color:'white !important'}}><AiOutlineArrowLeft style={{color:'white !Important'}}/></span></button>
       <button onClick={() => swiper.slideNext()}><AiOutlineArrowRight style={{color:'white'}}/></button>
     </div>
   );
