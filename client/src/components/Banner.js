@@ -77,9 +77,7 @@ const Banner = ({ timeline, ease }) => {
           </Link>
       </div>
     </div>
-    <div>
-      <center><img src="./images/how.png" alt=""  width={'80%'} style={{margin:'auto'}}/></center>
-    </div>
+   
  </div>
   );
 };

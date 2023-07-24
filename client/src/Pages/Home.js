@@ -8,13 +8,15 @@ import Favi from './Favi'
 import Unique from "./Unique";
 import Upload from "./Upload";
 import Review from "../components/Review";
+import How from "../components/How";
 const Home = () => {
     return (
         <>
             <Navigation />
             <Banner />
+            <How/>
           <Favi/>
-            {/* <AboutNft /> */}
+           
             <Unique/>
             <Upload/>
            <Review/>
