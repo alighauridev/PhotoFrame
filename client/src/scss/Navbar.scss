@@ -1,7 +1,33 @@
 body{
   
 }
-.mega-menu-parent {
+.main-nav-parent{
+.top-navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    padding: 10px 0;
+    margin: auto;
+    .heart{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        img{
+            width: 30%;
+        }
+    }
+    .title{
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        h5{
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
+    .mega-menu-parent {
  
     .nav {
         position: fixed;
@@ -11,10 +37,10 @@ body{
     }
 
     nav .wrapper {
-        position: relative;
+ 
       
         padding: 0px 30px;
-        height: 70px;
+
         width: 100%;
         line-height: 35px;
         margin: auto;
@@ -336,4 +362,5 @@ align-items: center;
         font-size: 45px;
         font-weight: 600;
     }
+}
 }
