@@ -45,8 +45,31 @@ const Banner = ({ timeline, ease }) => {
         <center><h1 style={{fontFamily:'Montserrat, system-ui',fontSize:'48px',fontWeight:'600',margin:'0',paddingBottom:'40px'}}>Bring Your Art to Life By <b style={{color:'#4890A9'}}>Printing</b> on Wood <br /> Grain, Canvas or Acrylic!</h1></center>
         <center><p style={{fontFamily:'Montserrat, system-ui',fontSize:'18px',fontWeight:'400',margin:'0',paddingBottom:'40px'}}>Turn your photos into personalised gifts for weddings and special occasions</p></center>
       </div>
-      <div>
-        <center><img src="./images/framet.png" alt="" width={'80%'} style={{margin:'auto'}}/></center>
+      <div style={{display:'flex',justifyContent:'center',gap:'40px',padding:'20px 0 60px 0'}}>
+        <div style={{background:'#F0F0F0'}} >
+          <img src="./images/d1.png" alt="" width={'100%'} />
+          <div style={{background:'#F0F0F0',padding:'20px 0',borderRadius:'8px'}}>
+          <center> <h3>Art Design</h3></center>
+          </div>
+        </div>
+        <div style={{background:'#F0F0F0'}} >
+          <img src="./images/d4.png" alt="" width={'100%'} />
+          <div style={{background:'#F0F0F0',padding:'20px 0',borderRadius:'8px'}}>
+          <center> <h3>Art Design</h3></center>
+          </div>
+        </div>
+        <div style={{background:'#F0F0F0'}} >
+          <img src="./images/d2.png" alt="" width={'100%'} />
+          <div style={{background:'#F0F0F0',padding:'20px 0',borderRadius:'8px'}}>
+          <center> <h3>Art Design</h3></center>
+          </div>
+        </div>
+        <div style={{background:'#F0F0F0'}} >
+          <img src="./images/d3.png" alt="" width={'100%'} />
+          <div style={{background:'#F0F0F0',padding:'20px 0',borderRadius:'8px'}}>
+          <center> <h3>Art Design</h3></center>
+          </div>
+        </div>
       </div>
       <div>
       <Link to={"/frames-all"}>
@@ -54,9 +77,7 @@ const Banner = ({ timeline, ease }) => {
           </Link>
       </div>
     </div>
-    <div>
-      <center><img src="./images/how.png" alt=""  width={'80%'} style={{margin:'auto'}}/></center>
-    </div>
+   
  </div>
   );
 };

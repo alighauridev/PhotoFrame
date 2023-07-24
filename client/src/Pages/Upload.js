@@ -10,9 +10,10 @@ const Upload = () => {
    
     <div>
     <div>
-      <Link to={"/frames-all"}>
-        <center><button style={{background:'#4890A9',borderRadius:'50px',padding:'13px 25px',color:'white',border:'none'}}>shop all frames</button></center>
-          </Link>
+      
+    <center><label htmlFor="upload"><button style={{background:'#4890A9',borderRadius:'50px',padding:'13px 25px',color:'white',border:'none'}}>Upload Photo</button>
+       <input type="file" id='upload'  style={{display:'none'}}/>
+       </label></center>
       </div>
     </div>
   </div>
