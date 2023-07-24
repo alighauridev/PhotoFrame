@@ -63,7 +63,7 @@ import {BsFacebook} from 'react-icons/bs'
 import {AiOutlineInstagram,AiOutlineTwitter,AiOutlineGithub} from 'react-icons/ai'
 const Footer = () => {
   return (
-    <div style={{padding:'80px 0 40px 0'}}>
+    <div style={{padding:'80px 0 40px 0',background:'#F8F8F8'}}>
     <div style={{display:'flex',justifyContent:'center',gap:'40px'}}>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Home</h4>
       <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>About Us</h4>

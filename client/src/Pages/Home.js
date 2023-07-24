@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Favi from './Favi'
 import Unique from "./Unique";
 import Upload from "./Upload";
+import Review from "../components/Review";
 const Home = () => {
     return (
         <>
@@ -16,7 +17,7 @@ const Home = () => {
             {/* <AboutNft /> */}
             <Unique/>
             <Upload/>
-           
+           <Review/>
             <Footer />
         </>
     );
