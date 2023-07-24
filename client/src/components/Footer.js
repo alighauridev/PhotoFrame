@@ -59,11 +59,27 @@
 
 // export default Footer
 import React from 'react'
-
+import {BsFacebook} from 'react-icons/bs'
+import {AiOutlineInstagram,AiOutlineTwitter,AiOutlineGithub} from 'react-icons/ai'
 const Footer = () => {
   return (
+    <div style={{padding:'80px 0 40px 0'}}>
+    <div style={{display:'flex',justifyContent:'center',gap:'40px'}}>
+      <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Home</h4>
+      <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>About Us</h4>
+      <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>How Its Work</h4>
+      <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Services</h4>
+      <h4 style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}>Partners</h4>
+    </div>
+    <div style={{display:'flex',justifyContent:'center',gap:'40px ',marginTop:'20px'}}>
+<BsFacebook style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
+<AiOutlineInstagram style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
+<AiOutlineTwitter style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
+<AiOutlineGithub style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
+    </div>
     <div>
-    <img src="./images/Footer.png" alt="" width={'100%'} />
+      <center><p style={{marginTop:'20px',fontSize:'16px',color:'#6B7280'}}>© 2023 Workflow, Inc. All rights reserved.</p></center>
+    </div>
 </div>
   )
 }
