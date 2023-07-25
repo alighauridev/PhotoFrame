@@ -78,7 +78,7 @@ const Footer = () => {
 <AiOutlineGithub style={{fontSize:'16px',fontWeight:'400',color:'#6B7280'}}/>
     </div>
     <div>
-      <center><p style={{marginTop:'20px',fontSize:'16px',color:'#6B7280'}}>© 2023 Workflow, Inc. All rights reserved.</p></center>
+      <center><p style={{marginTop:'20px',fontSize:'16px',color:'#6B7280'}}>© 2023 Pictureframe, Inc. All rights reserved.</p></center>
     </div>
 </div>
   )
